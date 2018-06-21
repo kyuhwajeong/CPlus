@@ -1,0 +1,33 @@
+// HelloServer.idl : HelloServer의 IDL 소스입니다.
+//
+
+// 이 파일은 MIDL 도구에 의해 처리되어
+// 형식 라이브러리(HelloServer.tlb) 및 마샬링 코드가 생성됩니다.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(B831B149-A001-4A5F-A262-F0B14222DE89),
+	pointer_default(unique)
+]
+interface IHello : IUnknown{
+	[] HRESULT sayHello([in] wchar_t** message, [out] wchar_t** name);
+};
+[
+	uuid(246DAD35-6974-4289-9927-C92941A82E3B),
+	version(1.0),
+]
+library HelloServerLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(8F0AA2B3-2F07-49AA-A79F-C8CA16455D8A)		
+	]
+	coclass Hello
+	{
+		[default] interface IHello;
+	};
+};
+
