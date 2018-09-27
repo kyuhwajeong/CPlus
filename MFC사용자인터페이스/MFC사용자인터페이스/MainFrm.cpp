@@ -19,13 +19,13 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
 	ON_WM_SETFOCUS()
 	ON_WM_SYSCOMMAND()
-	ON_UPDATE_COMMAND_UI(ID_INDICATOR_POS, &CMainFrame::OnUpdateIndicatorPos)
+	ON_UPDATE_COMMAND_UI(ID_INDICATOR_POS, &CMainFrame::OnUpdateIndicatorPos)	// 상태바 사용하기
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
 {
 	ID_SEPARATOR,           // 상태 줄 표시기
-	ID_INDICATOR_POS,
+	ID_INDICATOR_POS,		// 상태바 사용하기
 	ID_INDICATOR_CAPS,
 	ID_INDICATOR_NUM,
 	ID_INDICATOR_SCRL,
@@ -53,14 +53,14 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		TRACE0("뷰 창을 만들지 못했습니다.\n");
 		return -1;
 	}
-
+	//[ 상태바 생성
 	if (!m_wndStatusBar.Create(this))
 	{
 		TRACE0("상태 표시줄을 만들지 못했습니다.\n");
 		return -1;      // 만들지 못했습니다.
 	}
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
-
+	//]
 
 	//if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
 	//	!m_wndToolBar.LoadToolBar(IDR_MAINFRAME))
@@ -180,5 +180,5 @@ void CMainFrame::OnSysCommand(UINT nID, LPARAM lParam)
 void CMainFrame::OnUpdateIndicatorPos(CCmdUI *pCmdUI)
 {
 	// TODO: 여기에 명령 업데이트 UI 처리기 코드를 추가합니다.
-	pCmdUI->Enable();
+	pCmdUI->Enable(); 	//[ 상태바 사용하기(상태바 갱신 핸들러)
 }

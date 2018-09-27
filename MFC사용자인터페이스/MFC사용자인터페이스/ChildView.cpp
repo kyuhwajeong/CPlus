@@ -208,12 +208,12 @@ void CChildView::OnDestroy()
 
 void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	//[ 상태바 사용하기
 	CString str;
 	str.Format(L"마우스 좌표 (%4d,%4d)", point.x, point.y);
 	CMainFrame *pMainFrame = (CMainFrame *)AfxGetMainWnd();
 	pMainFrame->m_wndStatusBar.SetPaneText(1, str);
-
+	//]
 
 	CWnd::OnMouseMove(nFlags, point);
 }
