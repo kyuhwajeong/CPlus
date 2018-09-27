@@ -18,6 +18,9 @@
 
 BEGIN_MESSAGE_MAP(CMFC파일입출력App, CWinApp)
 	ON_COMMAND(ID_APP_ABOUT, &CMFC파일입출력App::OnAppAbout)
+	ON_COMMAND(ID_FILE_NEW, &CMFC파일입출력App::OnFileNew)
+	ON_COMMAND(ID_FILE_OPEN, &CMFC파일입출력App::OnFileOpen)
+	ON_COMMAND(ID_FILE_PRINT_SETUP, &CMFC파일입출력App::OnFilePrintSetup)
 END_MESSAGE_MAP()
 
 
@@ -150,3 +153,21 @@ void CMFC파일입출력App::OnAppAbout()
 
 
 
+
+
+void CMFC파일입출력App::OnFileNew()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+}
+
+
+void CMFC파일입출력App::OnFileOpen()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+}
+
+
+void CMFC파일입출력App::OnFilePrintSetup()
+{
+	// TODO: 여기에 명령 처리기 코드를 추가합니다.
+}

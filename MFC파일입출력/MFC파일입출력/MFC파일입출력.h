@@ -30,6 +30,9 @@ public:
 public:
 	afx_msg void OnAppAbout();
 	DECLARE_MESSAGE_MAP()
+	afx_msg void OnFileNew();
+	afx_msg void OnFileOpen();
+	afx_msg void OnFilePrintSetup();
 };
 
 extern CMFC파일입출력App theApp;
