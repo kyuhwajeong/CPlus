@@ -117,10 +117,10 @@ void CMFC파일입출력View::OnLButtonDblClk(UINT nFlags, CPoint point)
 		return;
 	}
 
-	int a = 100;
-	int b = 100;
-	file.Write(&a, sizeof(a));
-	file.Write(&b, sizeof(b));
+	int a = 200;
+	int b = 200;
+	CArchive ar(&file, CArchive::store);  // CArchive로 변경
+	ar << a << b;
 }
 
 
@@ -135,8 +135,8 @@ void CMFC파일입출력View::OnRButtonDblClk(UINT nFlags, CPoint point)
 	}
 
 	int a, b;
-	file.Read(&a, sizeof(a));
-	file.Read(&b, sizeof(b));
+	CArchive ar(&file, CArchive::load);  // CArchive로 변경
+	ar >> a >> b;
 
 	TRACE("a = %d, b = %d", a, b);
 }
