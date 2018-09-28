@@ -8,6 +8,8 @@
 #include "MFC파일입출력.h"
 #include "MainFrm.h"
 
+#include "MFC파일입출력Doc.h"
+#include "MFC파일입출력View.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -18,9 +20,11 @@
 
 BEGIN_MESSAGE_MAP(CMFC파일입출력App, CWinApp)
 	ON_COMMAND(ID_APP_ABOUT, &CMFC파일입출력App::OnAppAbout)
-	ON_COMMAND(ID_FILE_NEW, &CMFC파일입출력App::OnFileNew)
-	ON_COMMAND(ID_FILE_OPEN, &CMFC파일입출력App::OnFileOpen)
-	ON_COMMAND(ID_FILE_PRINT_SETUP, &CMFC파일입출력App::OnFilePrintSetup)
+	// 표준 파일을 기초로 하는 문서 명령입니다.
+	ON_COMMAND(ID_FILE_NEW, &CWinApp::OnFileNew)
+	ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
+	// 표준 인쇄 설정 명령입니다.
+	ON_COMMAND(ID_FILE_PRINT_SETUP, &CWinApp::OnFilePrintSetup)
 END_MESSAGE_MAP()
 
 
@@ -29,7 +33,7 @@ END_MESSAGE_MAP()
 CMFC파일입출력App::CMFC파일입출력App()
 {
 	// 다시 시작 관리자 지원
-	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
+	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_ALL_ASPECTS;
 #ifdef _MANAGED
 	// 응용 프로그램을 공용 언어 런타임 지원을 사용하여 빌드한 경우(/clr):
 	//     1) 이 추가 설정은 다시 시작 관리자 지원이 제대로 작동하는 데 필요합니다.
@@ -80,33 +84,37 @@ BOOL CMFC파일입출력App::InitInstance()
 	// TODO: 이 문자열을 회사 또는 조직의 이름과 같은
 	// 적절한 내용으로 수정해야 합니다.
 	SetRegistryKey(_T("로컬 응용 프로그램 마법사에서 생성된 응용 프로그램"));
+	LoadStdProfileSettings(4);  // MRU를 포함하여 표준 INI 파일 옵션을 로드합니다.
 
 
-	// 주 창을 만들기 위해 이 코드에서는 새 프레임 창 개체를
-	// 만든 다음 이를 응용 프로그램의 주 창 개체로 설정합니다.
-	CMainFrame* pFrame = new CMainFrame;
-	if (!pFrame)
+	// 응용 프로그램의 문서 템플릿을 등록합니다.  문서 템플릿은
+	//  문서, 프레임 창 및 뷰 사이의 연결 역할을 합니다.
+	CSingleDocTemplate* pDocTemplate;
+	pDocTemplate = new CSingleDocTemplate(
+		IDR_MAINFRAME,
+		RUNTIME_CLASS(CMFC파일입출력Doc),
+		RUNTIME_CLASS(CMainFrame),       // 주 SDI 프레임 창입니다.
+		RUNTIME_CLASS(CMFC파일입출력View));
+	if (!pDocTemplate)
 		return FALSE;
-	m_pMainWnd = pFrame;
-	// 프레임을 만들어 리소스와 함께 로드합니다.
-	pFrame->LoadFrame(IDR_MAINFRAME,
-		WS_OVERLAPPEDWINDOW | FWS_ADDTOTITLE, NULL,
-		NULL);
+	AddDocTemplate(pDocTemplate);
+
+
+	// 표준 셸 명령, DDE, 파일 열기에 대한 명령줄을 구문 분석합니다.
+	CCommandLineInfo cmdInfo;
+	ParseCommandLine(cmdInfo);
 
 
 
-
+	// 명령줄에 지정된 명령을 디스패치합니다.
+	// 응용 프로그램이 /RegServer, /Register, /Unregserver 또는 /Unregister로 시작된 경우 FALSE를 반환합니다.
+	if (!ProcessShellCommand(cmdInfo))
+		return FALSE;
 
 	// 창 하나만 초기화되었으므로 이를 표시하고 업데이트합니다.
-	pFrame->ShowWindow(SW_SHOW);
-	pFrame->UpdateWindow();
+	m_pMainWnd->ShowWindow(SW_SHOW);
+	m_pMainWnd->UpdateWindow();
 	return TRUE;
-}
-
-int CMFC파일입출력App::ExitInstance()
-{
-	//TODO: 추가한 추가 리소스를 처리합니다.
-	return CWinApp::ExitInstance();
 }
 
 // CMFC파일입출력App 메시지 처리기
@@ -153,21 +161,3 @@ void CMFC파일입출력App::OnAppAbout()
 
 
 
-
-
-void CMFC파일입출력App::OnFileNew()
-{
-	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-}
-
-
-void CMFC파일입출력App::OnFileOpen()
-{
-	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-}
-
-
-void CMFC파일입출력App::OnFilePrintSetup()
-{
-	// TODO: 여기에 명령 처리기 코드를 추가합니다.
-}

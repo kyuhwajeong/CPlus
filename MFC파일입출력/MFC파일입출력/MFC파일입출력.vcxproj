@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{440B5774-DC20-48DA-A186-8EAB36900BC2}</ProjectGuid>
+    <ProjectGuid>{5323A6B9-0BAA-431A-BBB9-14A24810115B}</ProjectGuid>
     <RootNamespace>MFC파일입출력</RootNamespace>
     <Keyword>MFCProj</Keyword>
   </PropertyGroup>
@@ -101,17 +101,19 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ChildView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MFC파일입출력.h" />
+    <ClInclude Include="MFC파일입출력Doc.h" />
+    <ClInclude Include="MFC파일입출력View.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MFC파일입출력.cpp" />
+    <ClCompile Include="MFC파일입출력Doc.cpp" />
+    <ClCompile Include="MFC파일입출력View.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -125,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\MFC파일입출력.ico" />
+    <Image Include="res\MFC파일입출력Doc.ico" />
+    <Image Include="res\Toolbar.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

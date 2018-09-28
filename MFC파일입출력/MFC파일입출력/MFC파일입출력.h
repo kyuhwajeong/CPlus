@@ -23,16 +23,10 @@ public:
 // 재정의입니다.
 public:
 	virtual BOOL InitInstance();
-	virtual int ExitInstance();
 
 // 구현입니다.
-
-public:
 	afx_msg void OnAppAbout();
 	DECLARE_MESSAGE_MAP()
-	afx_msg void OnFileNew();
-	afx_msg void OnFileOpen();
-	afx_msg void OnFilePrintSetup();
 };
 
 extern CMFC파일입출력App theApp;
