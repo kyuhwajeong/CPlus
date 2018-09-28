@@ -43,6 +43,10 @@ protected:
 public:
 	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
 	afx_msg void OnRButtonDblClk(UINT nFlags, CPoint point);
+	afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnColorRed();
+	afx_msg void OnColorGreen();
+	afx_msg void OnColorBlue();
 };
 
 #ifndef _DEBUG  // MFC파일입출력View.cpp의 디버그 버전

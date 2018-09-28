@@ -28,6 +28,10 @@ BEGIN_MESSAGE_MAP(CMFC파일입출력View, CView)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
 	ON_WM_LBUTTONDBLCLK()
 	ON_WM_RBUTTONDBLCLK()
+	ON_WM_CHAR()
+	ON_COMMAND(ID_COLOR_RED, &CMFC파일입출력View::OnColorRed)
+	ON_COMMAND(ID_COLOR_GREEN, &CMFC파일입출력View::OnColorGreen)
+	ON_COMMAND(ID_COLOR_BLUE, &CMFC파일입출력View::OnColorBlue)
 END_MESSAGE_MAP()
 
 // CMFC파일입출력View 생성/소멸
@@ -52,14 +56,20 @@ BOOL CMFC파일입출력View::PreCreateWindow(CREATESTRUCT& cs)
 
 // CMFC파일입출력View 그리기
 
-void CMFC파일입출력View::OnDraw(CDC* /*pDC*/)
+void CMFC파일입출력View::OnDraw(CDC* pDC)
 {
 	CMFC파일입출력Doc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
-
-	// TODO: 여기에 원시 데이터에 대한 그리기 코드를 추가합니다.
+	
+	CFont font;
+	font.CreatePointFont(200, L"Arial");
+	pDC->SelectObject(&font);
+	pDC->SetTextColor(pDoc->m_color);
+	CRect rect;
+	GetClientRect(&rect);
+	pDC->DrawText(pDoc->m_str, &rect, DT_LEFT);
 }
 
 
@@ -139,4 +149,50 @@ void CMFC파일입출력View::OnRButtonDblClk(UINT nFlags, CPoint point)
 	ar >> a >> b;
 
 	TRACE("a = %d, b = %d", a, b);
+}
+
+
+void CMFC파일입출력View::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	CMFC파일입출력Doc* pDoc = GetDocument();
+	int nCharIndex;
+	nCharIndex = pDoc->m_str.GetLength();		// 입력된 데이터의 길이를 얻는다
+	if (nChar == VK_BACK)
+	{
+		pDoc->m_str.Delete(nCharIndex - 1, 1);	// 한번에 하나씩 지운다.
+	}
+	else{
+		pDoc->m_str += (TCHAR)nChar;
+	}
+	pDoc->SetModifiedFlag();	// 도큐먼트 객체의 내용이 수정되었음을 도큐먼트 객체에게 알린다.
+	Invalidate();				// CWnd::Invalidate()함수를 이용해서 WM_PRINT 메시지를 발생시킨다.
+
+	CView::OnChar(nChar, nRepCnt, nFlags);
+}
+
+
+void CMFC파일입출력View::OnColorRed()
+{
+	CMFC파일입출력Doc* pDoc = GetDocument();
+	pDoc->m_color = RGB(255, 0, 0);
+	pDoc->SetModifiedFlag();
+	Invalidate();
+}
+
+
+void CMFC파일입출력View::OnColorGreen()
+{
+	CMFC파일입출력Doc* pDoc = GetDocument();
+	pDoc->m_color = RGB(0, 255, 0);
+	pDoc->SetModifiedFlag();
+	Invalidate();
+}
+
+
+void CMFC파일입출력View::OnColorBlue()
+{
+	CMFC파일입출력Doc* pDoc = GetDocument();
+	pDoc->m_color = RGB(0, 0, 255);
+	pDoc->SetModifiedFlag();
+	Invalidate();
 }

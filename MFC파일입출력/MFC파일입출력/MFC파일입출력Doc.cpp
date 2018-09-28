@@ -28,6 +28,7 @@ END_MESSAGE_MAP()
 // CMFC파일입출력Doc 생성/소멸
 
 CMFC파일입출력Doc::CMFC파일입출력Doc()
+	: m_str(_T(""))
 {
 	// TODO: 여기에 일회성 생성 코드를 추가합니다.
 
@@ -43,7 +44,8 @@ BOOL CMFC파일입출력Doc::OnNewDocument()
 		return FALSE;
 
 	// TODO: 여기에 재초기화 코드를 추가합니다.
-	// SDI 문서는 이 문서를 다시 사용합니다.
+	m_str = "";
+	m_color = RGB(255, 0, 0);
 
 	return TRUE;
 }
@@ -57,11 +59,11 @@ void CMFC파일입출력Doc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
-		// TODO: 여기에 저장 코드를 추가합니다.
+		ar << m_str << m_color;
 	}
 	else
 	{
-		// TODO: 여기에 로딩 코드를 추가합니다.
+		ar >> m_str >> m_color;
 	}
 }
 
