@@ -66,10 +66,18 @@ void CMFC파일입출력View::OnDraw(CDC* pDC)
 	CFont font;
 	font.CreatePointFont(200, L"Arial");
 	pDC->SelectObject(&font);
+#ifdef _NOT_SERIAL_CLS_
 	pDC->SetTextColor(pDoc->m_color);
+#else
+	pDC->SetTextColor(pDoc->m_data.m_color);
+#endif
 	CRect rect;
 	GetClientRect(&rect);
+#ifdef _NOT_SERIAL_CLS_
 	pDC->DrawText(pDoc->m_str, &rect, DT_LEFT);
+#else
+	pDC->DrawText(pDoc->m_data.m_str, &rect, DT_LEFT);
+#endif
 }
 
 
@@ -156,13 +164,25 @@ void CMFC파일입출력View::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	CMFC파일입출력Doc* pDoc = GetDocument();
 	int nCharIndex;
+#ifdef _NOT_SERIAL_CLS_
 	nCharIndex = pDoc->m_str.GetLength();		// 입력된 데이터의 길이를 얻는다
+#else
+	nCharIndex = pDoc->m_data.m_str.GetLength();		// 입력된 데이터의 길이를 얻는다
+#endif
 	if (nChar == VK_BACK)
 	{
+#ifdef _NOT_SERIAL_CLS_
 		pDoc->m_str.Delete(nCharIndex - 1, 1);	// 한번에 하나씩 지운다.
+#else
+		pDoc->m_data.m_str.Delete(nCharIndex - 1, 1);	// 한번에 하나씩 지운다.
+#endif
 	}
 	else{
+#ifdef _NOT_SERIAL_CLS_
 		pDoc->m_str += (TCHAR)nChar;
+#else
+		pDoc->m_data.m_str += (TCHAR)nChar;
+#endif
 	}
 	pDoc->SetModifiedFlag();	// 도큐먼트 객체의 내용이 수정되었음을 도큐먼트 객체에게 알린다.
 	Invalidate();				// CWnd::Invalidate()함수를 이용해서 WM_PRINT 메시지를 발생시킨다.
@@ -174,7 +194,11 @@ void CMFC파일입출력View::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 void CMFC파일입출력View::OnColorRed()
 {
 	CMFC파일입출력Doc* pDoc = GetDocument();
+#ifdef _NOT_SERIAL_CLS_
 	pDoc->m_color = RGB(255, 0, 0);
+#else
+	pDoc->m_data.m_color = RGB(255, 0, 0);
+#endif
 	pDoc->SetModifiedFlag();
 	Invalidate();
 }
@@ -183,7 +207,11 @@ void CMFC파일입출력View::OnColorRed()
 void CMFC파일입출력View::OnColorGreen()
 {
 	CMFC파일입출력Doc* pDoc = GetDocument();
+#ifdef _NOT_SERIAL_CLS_
 	pDoc->m_color = RGB(0, 255, 0);
+#else
+	pDoc->m_data.m_color = RGB(0, 255, 0);
+#endif
 	pDoc->SetModifiedFlag();
 	Invalidate();
 }
@@ -192,7 +220,11 @@ void CMFC파일입출력View::OnColorGreen()
 void CMFC파일입출력View::OnColorBlue()
 {
 	CMFC파일입출력Doc* pDoc = GetDocument();
+#ifdef _NOT_SERIAL_CLS_
 	pDoc->m_color = RGB(0, 0, 255);
+#else
+	pDoc->m_data.m_color = RGB(0, 0, 255);
+#endif
 	pDoc->SetModifiedFlag();
 	Invalidate();
 }

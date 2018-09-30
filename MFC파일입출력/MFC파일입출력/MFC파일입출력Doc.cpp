@@ -28,7 +28,9 @@ END_MESSAGE_MAP()
 // CMFC파일입출력Doc 생성/소멸
 
 CMFC파일입출력Doc::CMFC파일입출력Doc()
+#ifdef _NOT_SERIAL_CLS_
 	: m_str(_T(""))
+#endif
 {
 	// TODO: 여기에 일회성 생성 코드를 추가합니다.
 
@@ -44,9 +46,12 @@ BOOL CMFC파일입출력Doc::OnNewDocument()
 		return FALSE;
 
 	// TODO: 여기에 재초기화 코드를 추가합니다.
+#ifdef _NOT_SERIAL_CLS_
 	m_str = "";
 	m_color = RGB(255, 0, 0);
+#else
 
+#endif
 	return TRUE;
 }
 
@@ -59,11 +64,19 @@ void CMFC파일입출력Doc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
+#ifdef _NOT_SERIAL_CLS_
 		ar << m_str << m_color;
+#else
+		m_data.Serialize(ar);
+#endif
 	}
 	else
 	{
+#ifdef _NOT_SERIAL_CLS_
 		ar >> m_str >> m_color;
+#else
+		m_data.Serialize(ar);
+#endif
 	}
 }
 

@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "MyData.h"
 
 class CMFC파일입출력Doc : public CDocument
 {
@@ -46,6 +47,10 @@ protected:
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
 public:
+#ifdef _NOT_SERIAL_CLS_
 	CString m_str;
 	COLORREF m_color;
+#else
+	CMyData m_data;
+#endif
 };

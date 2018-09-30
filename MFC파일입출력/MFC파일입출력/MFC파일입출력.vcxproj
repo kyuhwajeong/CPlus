@@ -105,6 +105,7 @@
     <ClInclude Include="MFC파일입출력.h" />
     <ClInclude Include="MFC파일입출력Doc.h" />
     <ClInclude Include="MFC파일입출력View.h" />
+    <ClInclude Include="MyData.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -114,6 +115,7 @@
     <ClCompile Include="MFC파일입출력.cpp" />
     <ClCompile Include="MFC파일입출력Doc.cpp" />
     <ClCompile Include="MFC파일입출력View.cpp" />
+    <ClCompile Include="MyData.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
