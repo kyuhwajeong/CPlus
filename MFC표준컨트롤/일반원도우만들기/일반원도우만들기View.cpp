@@ -27,6 +27,7 @@ BEGIN_MESSAGE_MAP(C일반원도우만들기View, CView)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
 	ON_WM_CREATE()
+	ON_BN_CLICKED(101, OnButtonClicked)
 END_MESSAGE_MAP()
 
 // C일반원도우만들기View 생성/소멸
@@ -134,4 +135,30 @@ int C일반원도우만들기View::OnCreate(LPCREATESTRUCT lpCreateStruct) // 클래스 마�
 	m_radio1.SetCheck(BST_CHECKED);
 
 	return 0;
+}
+
+
+void C일반원도우만들기View::OnButtonClicked()
+{
+	BOOL bCheckBox, bRadio1, bRadio2;
+	bCheckBox = bRadio1 = bRadio2 = FALSE;
+
+	if (m_checkbox.GetCheck() == BST_CHECKED)
+		bCheckBox = TRUE;
+	if (m_radio1.GetCheck() == BST_CHECKED)
+		bRadio1 = TRUE;
+	if (m_radio2.GetCheck() == BST_CHECKED)
+		bRadio2 = TRUE;
+
+	CString str1, str2, str3;
+	if (bCheckBox) str1 = "체크 박스가 체크되었습니다.";
+	else str1 = "체크 박스가 체크되지 않았습니다.";
+
+	if (bRadio1) str2 = "라디오 버튼1이 선택되었습니다.";
+	else str2 = "라디오 버튼1이 선택되지 않았습니다.";
+
+	if (bRadio2) str3 = "라디오 버튼2가 선택되었습니다.";
+	else str3 = "라디오 버튼2가 선택되지 않았습니다.";
+
+	MessageBox(str1 + '\n' + str2 + '\n' + str3);
 }

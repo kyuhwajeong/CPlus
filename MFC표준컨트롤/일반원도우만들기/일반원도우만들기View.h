@@ -48,6 +48,7 @@ public:
 	CButton m_radio2;
 	CButton m_groupbox;
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	void OnButtonClicked();
 };
 
 #ifndef _DEBUG  // 일반원도우만들기View.cpp의 디버그 버전
