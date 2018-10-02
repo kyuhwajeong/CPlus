@@ -1,36 +1,34 @@
 
-// 대화상자에만들기.cpp : 응용 프로그램에 대한 클래스 동작을 정의합니다.
+// 대화상자에서만들기.cpp : 응용 프로그램에 대한 클래스 동작을 정의합니다.
 //
 
 #include "stdafx.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
-#include "대화상자에만들기.h"
+#include "대화상자에서만들기.h"
 #include "MainFrm.h"
 
-#include "대화상자에만들기Doc.h"
-#include "대화상자에만들기View.h"
+#include "대화상자에서만들기Doc.h"
+#include "대화상자에서만들기View.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// C대화상자에만들기App
+// C대화상자에서만들기App
 
-BEGIN_MESSAGE_MAP(C대화상자에만들기App, CWinAppEx)
-	ON_COMMAND(ID_APP_ABOUT, &C대화상자에만들기App::OnAppAbout)
+BEGIN_MESSAGE_MAP(C대화상자에서만들기App, CWinAppEx)
+	ON_COMMAND(ID_APP_ABOUT, &C대화상자에서만들기App::OnAppAbout)
 	// 표준 파일을 기초로 하는 문서 명령입니다.
 	ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
-	// 표준 인쇄 설정 명령입니다.
-	ON_COMMAND(ID_FILE_PRINT_SETUP, &CWinAppEx::OnFilePrintSetup)
 END_MESSAGE_MAP()
 
 
-// C대화상자에만들기App 생성
+// C대화상자에서만들기App 생성
 
-C대화상자에만들기App::C대화상자에만들기App()
+C대화상자에서만들기App::C대화상자에서만들기App()
 {
 	// 다시 시작 관리자 지원
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_ALL_ASPECTS;
@@ -43,20 +41,20 @@ C대화상자에만들기App::C대화상자에만들기App()
 
 	// TODO: 아래 응용 프로그램 ID 문자열을 고유 ID 문자열로 바꾸십시오(권장).
 	// 문자열에 대한 서식: CompanyName.ProductName.SubProduct.VersionInformation
-	SetAppID(_T("대화상자에만들기.AppID.NoVersion"));
+	SetAppID(_T("대화상자에서만들기.AppID.NoVersion"));
 
 	// TODO: 여기에 생성 코드를 추가합니다.
 	// InitInstance에 모든 중요한 초기화 작업을 배치합니다.
 }
 
-// 유일한 C대화상자에만들기App 개체입니다.
+// 유일한 C대화상자에서만들기App 개체입니다.
 
-C대화상자에만들기App theApp;
+C대화상자에서만들기App theApp;
 
 
-// C대화상자에만들기App 초기화
+// C대화상자에서만들기App 초기화
 
-BOOL C대화상자에만들기App::InitInstance()
+BOOL C대화상자에서만들기App::InitInstance()
 {
 	// 응용 프로그램 매니페스트가 ComCtl32.dll 버전 6 이상을 사용하여 비주얼 스타일을
 	// 사용하도록 지정하는 경우, Windows XP 상에서 반드시 InitCommonControlsEx()가 필요합니다. 
@@ -92,9 +90,9 @@ BOOL C대화상자에만들기App::InitInstance()
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
 		IDR_MAINFRAME,
-		RUNTIME_CLASS(C대화상자에만들기Doc),
+		RUNTIME_CLASS(C대화상자에서만들기Doc),
 		RUNTIME_CLASS(CMainFrame),       // 주 SDI 프레임 창입니다.
-		RUNTIME_CLASS(C대화상자에만들기View));
+		RUNTIME_CLASS(C대화상자에서만들기View));
 	if (!pDocTemplate)
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
@@ -117,7 +115,7 @@ BOOL C대화상자에만들기App::InitInstance()
 	return TRUE;
 }
 
-// C대화상자에만들기App 메시지 처리기
+// C대화상자에서만들기App 메시지 처리기
 
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
@@ -151,13 +149,13 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 // 대화 상자를 실행하기 위한 응용 프로그램 명령입니다.
-void C대화상자에만들기App::OnAppAbout()
+void C대화상자에서만들기App::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
 }
 
-// C대화상자에만들기App 메시지 처리기
+// C대화상자에서만들기App 메시지 처리기
 
 
 

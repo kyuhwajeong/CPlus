@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FCE64471-7F3D-41F0-8C18-4CA51F79C875}</ProjectGuid>
-    <RootNamespace>대화상자에만들기</RootNamespace>
+    <ProjectGuid>{6BD2E721-7EC4-450D-B793-8C2F00FE5C15}</ProjectGuid>
+    <RootNamespace>대화상자에서만들기</RootNamespace>
     <Keyword>MFCProj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -105,9 +105,9 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="대화상자에만들기.h" />
-    <ClInclude Include="대화상자에만들기Doc.h" />
-    <ClInclude Include="대화상자에만들기View.h" />
+    <ClInclude Include="대화상자에서만들기.h" />
+    <ClInclude Include="대화상자에서만들기Doc.h" />
+    <ClInclude Include="대화상자에서만들기View.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainFrm.cpp" />
@@ -115,22 +115,27 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="대화상자에만들기.cpp" />
-    <ClCompile Include="대화상자에만들기Doc.cpp" />
-    <ClCompile Include="대화상자에만들기View.cpp" />
+    <ClCompile Include="대화상자에서만들기.cpp" />
+    <ClCompile Include="대화상자에서만들기Doc.cpp" />
+    <ClCompile Include="대화상자에서만들기View.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="대화상자에만들기.rc" />
+    <ResourceCompile Include="대화상자에서만들기.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\My.rc2" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Toolbar.bmp" />
-    <Image Include="res\대화상자에만들기.ico" />
-    <Image Include="res\대화상자에만들기Doc.ico" />
+    <Image Include="res\대화상자에서만들기.ico" />
+    <Image Include="res\대화상자에서만들기Doc.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="대화상자에서만들기.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

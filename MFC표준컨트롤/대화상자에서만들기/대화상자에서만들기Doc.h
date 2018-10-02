@@ -1,16 +1,16 @@
 
-// 대화상자에만들기Doc.h : C대화상자에만들기Doc 클래스의 인터페이스
+// 대화상자에서만들기Doc.h : C대화상자에서만들기Doc 클래스의 인터페이스
 //
 
 
 #pragma once
 
 
-class C대화상자에만들기Doc : public CDocument
+class C대화상자에서만들기Doc : public CDocument
 {
 protected: // serialization에서만 만들어집니다.
-	C대화상자에만들기Doc();
-	DECLARE_DYNCREATE(C대화상자에만들기Doc)
+	C대화상자에서만들기Doc();
+	DECLARE_DYNCREATE(C대화상자에서만들기Doc)
 
 // 특성입니다.
 public:
@@ -29,7 +29,7 @@ public:
 
 // 구현입니다.
 public:
-	virtual ~C대화상자에만들기Doc();
+	virtual ~C대화상자에서만들기Doc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;

@@ -3,7 +3,7 @@
 //
 
 #include "stdafx.h"
-#include "대화상자에만들기.h"
+#include "대화상자에서만들기.h"
 
 #include "MainFrm.h"
 

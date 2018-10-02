@@ -1,5 +1,5 @@
 
-// 대화상자에만들기.h : 대화상자에만들기 응용 프로그램에 대한 주 헤더 파일
+// 대화상자에서만들기.h : 대화상자에서만들기 응용 프로그램에 대한 주 헤더 파일
 //
 #pragma once
 
@@ -10,14 +10,14 @@
 #include "resource.h"       // 주 기호입니다.
 
 
-// C대화상자에만들기App:
-// 이 클래스의 구현에 대해서는 대화상자에만들기.cpp을 참조하십시오.
+// C대화상자에서만들기App:
+// 이 클래스의 구현에 대해서는 대화상자에서만들기.cpp을 참조하십시오.
 //
 
-class C대화상자에만들기App : public CWinAppEx
+class C대화상자에서만들기App : public CWinAppEx
 {
 public:
-	C대화상자에만들기App();
+	C대화상자에서만들기App();
 
 
 // 재정의입니다.
@@ -29,4 +29,4 @@ public:
 	DECLARE_MESSAGE_MAP()
 };
 
-extern C대화상자에만들기App theApp;
+extern C대화상자에서만들기App theApp;

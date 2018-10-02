@@ -18,7 +18,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="대화상자에만들기.h">
+    <ClInclude Include="대화상자에서만들기.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
@@ -30,10 +30,10 @@
     <ClInclude Include="MainFrm.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="대화상자에만들기Doc.h">
+    <ClInclude Include="대화상자에서만들기Doc.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="대화상자에만들기View.h">
+    <ClInclude Include="대화상자에서만들기View.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
@@ -41,7 +41,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="대화상자에만들기.cpp">
+    <ClCompile Include="대화상자에서만들기.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
@@ -50,15 +50,15 @@
     <ClCompile Include="MainFrm.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="대화상자에만들기Doc.cpp">
+    <ClCompile Include="대화상자에서만들기Doc.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="대화상자에만들기View.cpp">
+    <ClCompile Include="대화상자에서만들기View.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="대화상자에만들기.rc">
+    <ResourceCompile Include="대화상자에서만들기.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -68,10 +68,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\대화상자에만들기Doc.ico">
+    <Image Include="res\대화상자에서만들기Doc.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="res\대화상자에만들기.ico">
+    <Image Include="res\대화상자에서만들기.ico">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="res\Toolbar.bmp">
