@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "일반원도우만들기", "일반원도우만들기\일반원도우만들기.vcxproj", "{B74C8505-18DB-4F70-AD20-A989CFCCA814}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "대화상자에만들기", "대화상자에만들기\대화상자에만들기.vcxproj", "{FCE64471-7F3D-41F0-8C18-4CA51F79C875}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,10 @@ Global
 		{B74C8505-18DB-4F70-AD20-A989CFCCA814}.Debug|Win32.Build.0 = Debug|Win32
 		{B74C8505-18DB-4F70-AD20-A989CFCCA814}.Release|Win32.ActiveCfg = Release|Win32
 		{B74C8505-18DB-4F70-AD20-A989CFCCA814}.Release|Win32.Build.0 = Release|Win32
+		{FCE64471-7F3D-41F0-8C18-4CA51F79C875}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FCE64471-7F3D-41F0-8C18-4CA51F79C875}.Debug|Win32.Build.0 = Debug|Win32
+		{FCE64471-7F3D-41F0-8C18-4CA51F79C875}.Release|Win32.ActiveCfg = Release|Win32
+		{FCE64471-7F3D-41F0-8C18-4CA51F79C875}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
