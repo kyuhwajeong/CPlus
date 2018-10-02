@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "afxwin.h"
 
 
 class C일반원도우만들기View : public CView
@@ -40,6 +41,13 @@ protected:
 // 생성된 메시지 맵 함수
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	CButton m_pushbutton;
+	CButton m_checkbox;
+	CButton m_radio1;
+	CButton m_radio2;
+	CButton m_groupbox;
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 };
 
 #ifndef _DEBUG  // 일반원도우만들기View.cpp의 디버그 버전

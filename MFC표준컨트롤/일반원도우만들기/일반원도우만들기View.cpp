@@ -26,6 +26,7 @@ BEGIN_MESSAGE_MAP(C일반원도우만들기View, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 // C일반원도우만들기View 생성/소멸
@@ -102,3 +103,35 @@ C일반원도우만들기Doc* C일반원도우만들기View::GetDocument() const // 디버그되지 �
 
 
 // C일반원도우만들기View 메시지 처리기
+
+
+int C일반원도우만들기View::OnCreate(LPCREATESTRUCT lpCreateStruct) // 클래스 마법사 - 메시지(탭) - WM_CREATE 선택 후 생성(부모 원도우가 생성될 때 생성됨)
+{
+	if (CView::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	m_pushbutton.Create(L"푸시 버튼",
+		WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+		CRect(20, 20, 150, 50), this, 101);
+
+	m_checkbox.Create(L"체크 박스",
+		WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX,
+		CRect(20, 70, 150, 100), this, 102);
+
+	m_radio1.Create(L"라디오 버튼1",
+		WS_CHILD | WS_VISIBLE | WS_GROUP|BS_AUTORADIOBUTTON,
+		CRect(20, 140, 150, 170), this, 103);
+
+	m_radio2.Create(L"라디오 버튼2",
+		WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON,
+		CRect(20, 180, 150, 210), this, 104);
+
+	m_groupbox.Create(L"그룹 박스",
+		WS_CHILD | WS_VISIBLE | BS_GROUPBOX,
+		CRect(10, 110, 160, 220), this, 105);
+
+	m_checkbox.SetCheck(BST_CHECKED);
+	m_radio1.SetCheck(BST_CHECKED);
+
+	return 0;
+}

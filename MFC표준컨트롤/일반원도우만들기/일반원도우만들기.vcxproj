@@ -133,4 +133,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="일반원도우만들기.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
