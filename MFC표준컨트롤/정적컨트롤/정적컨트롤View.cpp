@@ -36,6 +36,8 @@ BEGIN_MESSAGE_MAP(C정적컨트롤View, CFormView)
 	ON_LBN_SELCANCEL(IDC_LIST1, &C정적컨트롤View::OnSelcancelList1)
 	ON_LBN_SETFOCUS(IDC_LIST1, &C정적컨트롤View::OnSetfocusList1)
 	ON_LBN_KILLFOCUS(IDC_LIST1, &C정적컨트롤View::OnKillfocusList1)
+	ON_BN_CLICKED(IDC_BTNADD, &C정적컨트롤View::OnBnClickedBtnadd)
+	ON_BN_CLICKED(IDC_BTNDEL, &C정적컨트롤View::OnBnClickedBtndel)
 END_MESSAGE_MAP()
 
 // C정적컨트롤View 생성/소멸
@@ -207,6 +209,12 @@ void C정적컨트롤View::OnDblclkList1()
 void C정적컨트롤View::OnSelchangeList1()
 {
 	TRACE(L"\n사용자가 선택을 변경했다.");
+	int nIndex = m_list.GetCaretIndex();
+	if (nIndex != LB_ERR){
+		CString str;
+		m_list.GetText(nIndex, str);
+		GetDlgItem(IDC_EDIT2)->SetWindowTextW(str);
+	}
 }
 
 
@@ -225,4 +233,21 @@ void C정적컨트롤View::OnSetfocusList1()
 void C정적컨트롤View::OnKillfocusList1()
 {
 	TRACE(L"\n키보드 포커스를 잃었다.");
+}
+
+
+void C정적컨트롤View::OnBnClickedBtnadd()
+{
+	CString str;
+	GetDlgItem(IDC_EDIT2)->GetWindowTextW(str);
+	m_list.AddString(str);
+}
+
+
+void C정적컨트롤View::OnBnClickedBtndel()
+{
+	int nIndex = m_list.GetCaretIndex();
+	if (nIndex != LB_ERR){
+		m_list.DeleteString(nIndex);
+	}
 }

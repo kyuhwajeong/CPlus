@@ -62,6 +62,8 @@ public:
 	afx_msg void OnSelcancelList1();
 	afx_msg void OnSetfocusList1();
 	afx_msg void OnKillfocusList1();
+	afx_msg void OnBnClickedBtnadd();
+	afx_msg void OnBnClickedBtndel();
 };
 
 #ifndef _DEBUG  // 정적컨트롤View.cpp의 디버그 버전
