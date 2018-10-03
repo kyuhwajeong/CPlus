@@ -75,6 +75,10 @@ public:
 	CComboBox m_combo;
 	afx_msg void OnBnClickedBtncomboadd();
 	afx_msg void OnBnClickedBtncombodel();
+	CScrollBar m_scrollbar1;
+	CScrollBar m_scrollbar2;
+	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+	virtual void OnDraw(CDC* /*pDC*/);
 };
 
 #ifndef _DEBUG  // 정적컨트롤View.cpp의 디버그 버전

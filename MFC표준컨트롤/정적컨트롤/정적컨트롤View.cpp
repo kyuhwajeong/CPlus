@@ -48,6 +48,7 @@ BEGIN_MESSAGE_MAP(C정적컨트롤View, CFormView)
 	ON_CBN_SETFOCUS(IDC_COMBO1, &C정적컨트롤View::OnSetfocusCombo1)
 	ON_BN_CLICKED(IDC_BTNCOMBOADD, &C정적컨트롤View::OnBnClickedBtncomboadd)
 	ON_BN_CLICKED(IDC_BTNCOMBODEL, &C정적컨트롤View::OnBnClickedBtncombodel)
+	ON_WM_HSCROLL()
 END_MESSAGE_MAP()
 
 // C정적컨트롤View 생성/소멸
@@ -70,6 +71,8 @@ void C정적컨트롤View::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT1, m_edit);
 	DDX_Control(pDX, IDC_LIST1, m_list);
 	DDX_Control(pDX, IDC_COMBO1, m_combo);
+	DDX_Control(pDX, IDC_SCROLLBAR1, m_scrollbar1);
+	DDX_Control(pDX, IDC_SCROLLBAR2, m_scrollbar2);
 }
 
 BOOL C정적컨트롤View::PreCreateWindow(CREATESTRUCT& cs)
@@ -107,6 +110,11 @@ void C정적컨트롤View::OnInitialUpdate()
 	//m_list.SetCurSel(3);// 단일 선택 리스트 박스 컨트롤인 경우
 
 	m_combo.SetCurSel(0);
+
+	m_scrollbar1.SetScrollRange(0, 360, FALSE);
+	m_scrollbar1.SetScrollPos(0);
+	m_scrollbar2.SetScrollRange(0, 360, FALSE);
+	m_scrollbar2.SetScrollPos(0);
 
 }
 
@@ -335,4 +343,56 @@ void C정적컨트롤View::OnBnClickedBtncombodel()
 	if (nIndex != LB_ERR){
 		m_combo.DeleteString(nIndex);
 	}
+}
+
+
+
+void C정적컨트롤View::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+{
+	int nScrollPos;
+
+	if (pScrollBar->GetSafeHwnd() == m_scrollbar1.GetSafeHwnd()){
+		switch (nSBCode){
+		case SB_LINELEFT:
+			nScrollPos = pScrollBar->GetScrollPos();
+			if (nScrollPos > 0){
+				pScrollBar->SetScrollPos(--nScrollPos);
+				SetDlgItemInt(IDC_EDIT4, nScrollPos);
+				Invalidate();
+			}
+			break;
+		case SB_THUMBTRACK:
+			pScrollBar->SetScrollPos(nPos);
+			SetDlgItemInt(IDC_EDIT4, nPos);
+			Invalidate();
+			break;
+		}
+	}
+	else if (pScrollBar->GetSafeHwnd() == m_scrollbar2.GetSafeHwnd()){
+		switch (nSBCode){
+		case SB_THUMBTRACK:
+			pScrollBar->SetScrollPos(nPos);
+			SetDlgItemInt(IDC_EDIT5, nPos);
+			Invalidate();
+			break;
+		}
+	}
+
+	CFormView::OnHScroll(nSBCode, nPos, pScrollBar);
+}
+
+
+void C정적컨트롤View::OnDraw(CDC* pDC)
+{
+	LOGFONT lf;
+	::ZeroMemory(&lf, sizeof(lf));
+	lf.lfHeight = 300;
+	lf.lfEscapement = 10 * m_scrollbar1.GetScrollPos();
+	lf.lfOrientation = 10 * m_scrollbar1.GetScrollPos();
+	::lstrcpy(lf.lfFaceName, L"Arial");
+	CFont font;
+	font.CreatePointFontIndirect(&lf);
+	pDC->SelectObject(&font);
+	pDC->SetTextColor(RGB(m_scrollbar2.GetScrollPos(), 0, 0));
+	pDC->TextOut(700, 180, L"MFC");
 }

@@ -24,6 +24,10 @@
 #define IDC_EDIT3                       1015
 #define IDC_BTNCOMBOADD                 1016
 #define IDC_BTNCOMBODEL                 1017
+#define IDC_SCROLLBAR1                  1018
+#define IDC_SCROLLBAR2                  1019
+#define IDC_EDIT4                       1020
+#define IDC_EDIT5                       1021
 
 // Next default values for new objects
 // 
@@ -31,7 +35,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        311
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1015
+#define _APS_NEXT_CONTROL_VALUE         1020
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif
