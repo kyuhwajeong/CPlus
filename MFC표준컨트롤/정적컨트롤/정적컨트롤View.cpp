@@ -22,6 +22,7 @@
 IMPLEMENT_DYNCREATE(C정적컨트롤View, CFormView)
 
 BEGIN_MESSAGE_MAP(C정적컨트롤View, CFormView)
+	ON_STN_CLICKED(IDC_ENHMETA, &C정적컨트롤View::OnClickedEnhmeta)
 END_MESSAGE_MAP()
 
 // C정적컨트롤View 생성/소멸
@@ -40,6 +41,7 @@ C정적컨트롤View::~C정적컨트롤View()
 void C정적컨트롤View::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_ENHMETA, m_enhmeta);
 }
 
 BOOL C정적컨트롤View::PreCreateWindow(CREATESTRUCT& cs)
@@ -56,6 +58,7 @@ void C정적컨트롤View::OnInitialUpdate()
 	GetParentFrame()->RecalcLayout();
 	ResizeParentToFit();
 
+	m_enhmeta.SetEnhMetaFile(::GetEnhMetaFile(L"Example.emf"));
 }
 
 
@@ -81,3 +84,9 @@ C정적컨트롤Doc* C정적컨트롤View::GetDocument() const // 디버그되지 않은 버전은 �
 
 
 // C정적컨트롤View 메시지 처리기
+
+
+void C정적컨트롤View::OnClickedEnhmeta()
+{
+	MessageBox(L"메타파일로 그린 그림을 클릭했습니다.");
+}

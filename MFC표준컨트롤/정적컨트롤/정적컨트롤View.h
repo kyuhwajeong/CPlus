@@ -5,6 +5,7 @@
 #pragma once
 
 #include "resource.h"
+#include "afxwin.h"
 
 
 class C정적컨트롤View : public CFormView
@@ -43,6 +44,9 @@ protected:
 // 생성된 메시지 맵 함수
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	CStatic m_enhmeta;
+	afx_msg void OnClickedEnhmeta();
 };
 
 #ifndef _DEBUG  // 정적컨트롤View.cpp의 디버그 버전
