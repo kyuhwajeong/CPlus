@@ -31,6 +31,11 @@ BEGIN_MESSAGE_MAP(C정적컨트롤View, CFormView)
 	ON_BN_CLICKED(IDC_BTNTXTDSP, &C정적컨트롤View::OnBnClickedBtntxtdsp)
 	ON_BN_CLICKED(IDC_BTNREPLACE2, &C정적컨트롤View::OnBnClickedBtnreplace2)
 	ON_EN_CHANGE(IDC_EDIT1, &C정적컨트롤View::OnChangeEdit1)
+	ON_LBN_DBLCLK(IDC_LIST1, &C정적컨트롤View::OnDblclkList1)
+	ON_LBN_SELCHANGE(IDC_LIST1, &C정적컨트롤View::OnSelchangeList1)
+	ON_LBN_SELCANCEL(IDC_LIST1, &C정적컨트롤View::OnSelcancelList1)
+	ON_LBN_SETFOCUS(IDC_LIST1, &C정적컨트롤View::OnSetfocusList1)
+	ON_LBN_KILLFOCUS(IDC_LIST1, &C정적컨트롤View::OnKillfocusList1)
 END_MESSAGE_MAP()
 
 // C정적컨트롤View 생성/소멸
@@ -51,6 +56,7 @@ void C정적컨트롤View::DoDataExchange(CDataExchange* pDX)
 	CFormView::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_ENHMETA, m_enhmeta);
 	DDX_Control(pDX, IDC_EDIT1, m_edit);
+	DDX_Control(pDX, IDC_LIST1, m_list);
 }
 
 BOOL C정적컨트롤View::PreCreateWindow(CREATESTRUCT& cs)
@@ -75,6 +81,18 @@ void C정적컨트롤View::OnInitialUpdate()
 
 	// 입력 가능한 문자열의 길이를 제한하기
 	//m_edit.SetLimitText(20);
+
+	m_list.AddString(L"딸기");
+	m_list.AddString(L"바나나");
+	m_list.AddString(L"사과");
+	m_list.AddString(L"수박");
+	m_list.AddString(L"참외");
+	m_list.AddString(L"포도");
+
+	m_list.SetSel(3);// 4번째 항목 선택(다중 선택 리스트 박스 컨트롤인 경우)
+
+	//m_list.SetCurSel(3);// 단일 선택 리스트 박스 컨트롤인 경우
+
 }
 
 
@@ -165,4 +183,46 @@ void C정적컨트롤View::OnChangeEdit1()
 	//하고 마스크에 OR 연산하여 설정된 ENM_CHANGE 플래그를 지정하여 CRichEditCtrl().SetEventMask()를 호출하지 않으면
 	// 이 알림 메시지를 보내지 않습니다.
 	TRACE(L"OnChangeEdit1(내용을 변경하면 화면에 컨트롤이 다시 그려지는데 그 후에 메시지 발생");
+}
+
+
+void C정적컨트롤View::OnDblclkList1()
+{
+	TRACE(L"\n사용자가 항목을 더블 클릭");
+
+	// 선택한 항목 알아내기(단일 선택 리스트 박스 컨트롤인 경우)
+	//int nIndex = m_list.GetCurSel();
+
+	// 선택한 항목 알아내기(다중 선택 리스트 박스 컨트롤인 경우)
+	int nIndex = m_list.GetCaretIndex();
+	if (nIndex != LB_ERR){
+		CString str;
+		m_list.GetText(nIndex, str);
+
+		MessageBox(str);
+	}
+}
+
+
+void C정적컨트롤View::OnSelchangeList1()
+{
+	TRACE(L"\n사용자가 선택을 변경했다.");
+}
+
+
+void C정적컨트롤View::OnSelcancelList1()
+{
+	TRACE(L"\n사용자가 선택을 취소했다.");
+}
+
+
+void C정적컨트롤View::OnSetfocusList1()
+{
+	TRACE(L"\n키보드 포커스를 얻었다.");
+}
+
+
+void C정적컨트롤View::OnKillfocusList1()
+{
+	TRACE(L"\n키보드 포커스를 잃었다.");
 }

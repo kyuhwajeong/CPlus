@@ -56,6 +56,12 @@ public:
 	afx_msg void OnBnClickedBtntxtdsp();
 	afx_msg void OnBnClickedBtnreplace2();
 	afx_msg void OnChangeEdit1();
+	CListBox m_list;
+	afx_msg void OnDblclkList1();
+	afx_msg void OnSelchangeList1();
+	afx_msg void OnSelcancelList1();
+	afx_msg void OnSetfocusList1();
+	afx_msg void OnKillfocusList1();
 };
 
 #ifndef _DEBUG  // 정적컨트롤View.cpp의 디버그 버전
