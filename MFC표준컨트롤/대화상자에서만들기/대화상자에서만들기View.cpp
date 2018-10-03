@@ -23,6 +23,7 @@ IMPLEMENT_DYNCREATE(C대화상자에서만들기View, CFormView)
 
 BEGIN_MESSAGE_MAP(C대화상자에서만들기View, CFormView)
 	ON_BN_CLICKED(IDC_BUTTON1, &C대화상자에서만들기View::OnClickedButton1)
+	ON_COMMAND_RANGE(IDC_RADIO1, IDC_RADIO5, OnRadio)
 END_MESSAGE_MAP()
 
 // C대화상자에서만들기View 생성/소멸
@@ -113,4 +114,17 @@ void C대화상자에서만들기View::OnClickedButton1()
 	else str3 = "라디오 버튼2가 선택되지 않았습니다.";
 
 	MessageBox(str1 + '\n' + str2 + '\n' + str3);
+}
+
+void C대화상자에서만들기View::OnRadio(UINT nID)
+{
+	switch (nID)
+	{
+	case IDC_RADIO1:	break;
+	case IDC_RADIO2:	break;
+	case IDC_RADIO3:	break;
+	case IDC_RADIO4:	break;
+	case IDC_RADIO5:	break;
+	}
+
 }

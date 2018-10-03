@@ -50,6 +50,7 @@ public:
 	CButton m_radio1;
 	CButton m_radio2;
 	afx_msg void OnClickedButton1();
+	void OnRadio(UINT uID);
 };
 
 #ifndef _DEBUG  // 대화상자에서만들기View.cpp의 디버그 버전
