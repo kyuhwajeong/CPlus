@@ -23,6 +23,14 @@ IMPLEMENT_DYNCREATE(C정적컨트롤View, CFormView)
 
 BEGIN_MESSAGE_MAP(C정적컨트롤View, CFormView)
 	ON_STN_CLICKED(IDC_ENHMETA, &C정적컨트롤View::OnClickedEnhmeta)
+	ON_BN_CLICKED(IDC_BTNCLR, &C정적컨트롤View::OnBnClickedBtnclr)
+	ON_BN_CLICKED(IDC_BTNCUT, &C정적컨트롤View::OnBnClickedBtncut)
+	ON_BN_CLICKED(IDC_BTNPASTE, &C정적컨트롤View::OnBnClickedBtnpaste)
+	ON_BN_CLICKED(IDC_BTNUNDO, &C정적컨트롤View::OnBnClickedBtnundo)
+	ON_BN_CLICKED(IDC_BTNREPLACE, &C정적컨트롤View::OnBnClickedBtnreplace)
+	ON_BN_CLICKED(IDC_BTNTXTDSP, &C정적컨트롤View::OnBnClickedBtntxtdsp)
+	ON_BN_CLICKED(IDC_BTNREPLACE2, &C정적컨트롤View::OnBnClickedBtnreplace2)
+	ON_EN_CHANGE(IDC_EDIT1, &C정적컨트롤View::OnChangeEdit1)
 END_MESSAGE_MAP()
 
 // C정적컨트롤View 생성/소멸
@@ -42,6 +50,7 @@ void C정적컨트롤View::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_ENHMETA, m_enhmeta);
+	DDX_Control(pDX, IDC_EDIT1, m_edit);
 }
 
 BOOL C정적컨트롤View::PreCreateWindow(CREATESTRUCT& cs)
@@ -59,6 +68,13 @@ void C정적컨트롤View::OnInitialUpdate()
 	ResizeParentToFit();
 
 	m_enhmeta.SetEnhMetaFile(::GetEnhMetaFile(L"Example.emf"));
+
+	// 텍스트를 변경
+	m_edit.SetWindowTextW(L"초기값입니다.");
+
+
+	// 입력 가능한 문자열의 길이를 제한하기
+	//m_edit.SetLimitText(20);
 }
 
 
@@ -89,4 +105,64 @@ C정적컨트롤Doc* C정적컨트롤View::GetDocument() const // 디버그되지 않은 버전은 �
 void C정적컨트롤View::OnClickedEnhmeta()
 {
 	MessageBox(L"메타파일로 그린 그림을 클릭했습니다.");
+}
+
+
+void C정적컨트롤View::OnBnClickedBtnclr()// 현재 선택된 문자열을 삭제한다.
+{
+	m_edit.Clear();
+}
+
+
+void C정적컨트롤View::OnBnClickedBtncut()// 클립보드에 저장한다. 
+{
+	m_edit.Cut();
+}
+
+
+void C정적컨트롤View::OnBnClickedBtnpaste()// 클립보드에 저장된 내용을 붙여넣는다.
+{
+	m_edit.Paste();
+}
+
+
+void C정적컨트롤View::OnBnClickedBtnundo() // 이전으로 되돌리기
+{
+	m_edit.Undo();
+}
+
+
+void C정적컨트롤View::OnBnClickedBtnreplace()  // 시작과 끝지점의 내용을 치환한다.
+{
+	m_edit.SetSel(5, 7);
+	m_edit.ReplaceSel(L"ABC");
+}
+
+
+void C정적컨트롤View::OnBnClickedBtntxtdsp()  // 표시된 텍스트의 내용을 메시지 표시
+{
+	// 입력된 텍스트를 알아내기
+	CString str;
+	//m_edit.GetWindowTextW(str);
+	GetDlgItem(IDC_EDIT1)->GetWindowTextW(str);
+
+	MessageBox(str);
+}
+
+
+void C정적컨트롤View::OnBnClickedBtnreplace2()
+{
+	int len = m_edit.GetWindowTextLengthW();
+	m_edit.SetSel(len, len);
+	m_edit.ReplaceSel(L"새로 추가한 문자열입니다.");
+}
+
+
+void C정적컨트롤View::OnChangeEdit1()
+{
+	// TODO:  RICHEDIT 컨트롤인 경우, 이 컨트롤은
+	// CFormView::OnInitDialog() 함수를 재지정 
+	//하고 마스크에 OR 연산하여 설정된 ENM_CHANGE 플래그를 지정하여 CRichEditCtrl().SetEventMask()를 호출하지 않으면
+	// 이 알림 메시지를 보내지 않습니다.
+	TRACE(L"OnChangeEdit1(내용을 변경하면 화면에 컨트롤이 다시 그려지는데 그 후에 메시지 발생");
 }

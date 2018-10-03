@@ -47,6 +47,15 @@ protected:
 public:
 	CStatic m_enhmeta;
 	afx_msg void OnClickedEnhmeta();
+	CEdit m_edit;
+	afx_msg void OnBnClickedBtnclr();
+	afx_msg void OnBnClickedBtncut();
+	afx_msg void OnBnClickedBtnpaste();
+	afx_msg void OnBnClickedBtnundo();
+	afx_msg void OnBnClickedBtnreplace();
+	afx_msg void OnBnClickedBtntxtdsp();
+	afx_msg void OnBnClickedBtnreplace2();
+	afx_msg void OnChangeEdit1();
 };
 
 #ifndef _DEBUG  // 정적컨트롤View.cpp의 디버그 버전
