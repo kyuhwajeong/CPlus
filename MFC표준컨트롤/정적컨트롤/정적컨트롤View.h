@@ -64,6 +64,17 @@ public:
 	afx_msg void OnKillfocusList1();
 	afx_msg void OnBnClickedBtnadd();
 	afx_msg void OnBnClickedBtndel();
+	afx_msg void OnCloseupCombo1();
+	afx_msg void OnDblclkCombo1();
+	afx_msg void OnDropdownCombo1();
+	afx_msg void OnEditupdateCombo1();
+	afx_msg void OnKillfocusCombo1();
+	afx_msg void OnSelendcancelCombo1();
+	afx_msg void OnSelendokCombo1();
+	afx_msg void OnSetfocusCombo1();
+	CComboBox m_combo;
+	afx_msg void OnBnClickedBtncomboadd();
+	afx_msg void OnBnClickedBtncombodel();
 };
 
 #ifndef _DEBUG  // 정적컨트롤View.cpp의 디버그 버전

@@ -38,6 +38,16 @@ BEGIN_MESSAGE_MAP(C정적컨트롤View, CFormView)
 	ON_LBN_KILLFOCUS(IDC_LIST1, &C정적컨트롤View::OnKillfocusList1)
 	ON_BN_CLICKED(IDC_BTNADD, &C정적컨트롤View::OnBnClickedBtnadd)
 	ON_BN_CLICKED(IDC_BTNDEL, &C정적컨트롤View::OnBnClickedBtndel)
+	ON_CBN_CLOSEUP(IDC_COMBO1, &C정적컨트롤View::OnCloseupCombo1)
+	ON_CBN_DBLCLK(IDC_COMBO1, &C정적컨트롤View::OnDblclkCombo1)
+	ON_CBN_DROPDOWN(IDC_COMBO1, &C정적컨트롤View::OnDropdownCombo1)
+	ON_CBN_EDITUPDATE(IDC_COMBO1, &C정적컨트롤View::OnEditupdateCombo1)
+	ON_CBN_KILLFOCUS(IDC_COMBO1, &C정적컨트롤View::OnKillfocusCombo1)
+	ON_CBN_SELENDCANCEL(IDC_COMBO1, &C정적컨트롤View::OnSelendcancelCombo1)
+	ON_CBN_SELENDOK(IDC_COMBO1, &C정적컨트롤View::OnSelendokCombo1)
+	ON_CBN_SETFOCUS(IDC_COMBO1, &C정적컨트롤View::OnSetfocusCombo1)
+	ON_BN_CLICKED(IDC_BTNCOMBOADD, &C정적컨트롤View::OnBnClickedBtncomboadd)
+	ON_BN_CLICKED(IDC_BTNCOMBODEL, &C정적컨트롤View::OnBnClickedBtncombodel)
 END_MESSAGE_MAP()
 
 // C정적컨트롤View 생성/소멸
@@ -59,6 +69,7 @@ void C정적컨트롤View::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_ENHMETA, m_enhmeta);
 	DDX_Control(pDX, IDC_EDIT1, m_edit);
 	DDX_Control(pDX, IDC_LIST1, m_list);
+	DDX_Control(pDX, IDC_COMBO1, m_combo);
 }
 
 BOOL C정적컨트롤View::PreCreateWindow(CREATESTRUCT& cs)
@@ -94,6 +105,8 @@ void C정적컨트롤View::OnInitialUpdate()
 	m_list.SetSel(3);// 4번째 항목 선택(다중 선택 리스트 박스 컨트롤인 경우)
 
 	//m_list.SetCurSel(3);// 단일 선택 리스트 박스 컨트롤인 경우
+
+	m_combo.SetCurSel(0);
 
 }
 
@@ -249,5 +262,77 @@ void C정적컨트롤View::OnBnClickedBtndel()
 	int nIndex = m_list.GetCaretIndex();
 	if (nIndex != LB_ERR){
 		m_list.DeleteString(nIndex);
+	}
+}
+
+
+void C정적컨트롤View::OnCloseupCombo1()
+{
+	TRACE(L"\n리스트 박스가 닫혔다.");
+}
+
+
+void C정적컨트롤View::OnDblclkCombo1()
+{
+	TRACE(L"\n사용자가 항목을 더블 클릭했다."); 
+}
+
+
+void C정적컨트롤View::OnDropdownCombo1()
+{
+	TRACE(L"\n리스트 박스가 열리기 직전이다.");
+}
+
+
+void C정적컨트롤View::OnEditupdateCombo1()
+{
+	TRACE(L"\nEN_EDITUPDATE.");
+}
+
+
+void C정적컨트롤View::OnKillfocusCombo1()
+{
+	TRACE(L"\n키보드 포커스를 잃었다.");
+}
+
+
+void C정적컨트롤View::OnSelendcancelCombo1()
+{
+	TRACE(L"\nLBN_SELENDCANCEL");
+}
+
+
+void C정적컨트롤View::OnSelendokCombo1()
+{
+	TRACE(L"\n사용자가 항목을 선택했다.");
+	int nIndex = m_combo.GetCurSel();
+	if (nIndex != LB_ERR){
+		CString str;
+		m_combo.GetLBText(nIndex, str);
+
+		MessageBox(str);
+	}
+}
+
+
+void C정적컨트롤View::OnSetfocusCombo1()
+{
+	TRACE(L"\n키보드 포커스를 얻었다.");
+}
+
+
+void C정적컨트롤View::OnBnClickedBtncomboadd()
+{
+	CString str;
+	GetDlgItem(IDC_EDIT3)->GetWindowTextW(str);
+	m_combo.AddString(str);
+}
+
+
+void C정적컨트롤View::OnBnClickedBtncombodel()
+{
+	int nIndex = m_combo.GetCurSel();
+	if (nIndex != LB_ERR){
+		m_combo.DeleteString(nIndex);
 	}
 }

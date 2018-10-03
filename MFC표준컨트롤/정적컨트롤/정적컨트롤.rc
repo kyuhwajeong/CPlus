@@ -198,6 +198,10 @@ BEGIN
     EDITTEXT        IDC_EDIT2,245,7,40,14,ES_AUTOHSCROLL
     PUSHBUTTON      "추가",IDC_BTNADD,292,7,50,14
     PUSHBUTTON      "삭제",IDC_BTNDEL,292,25,50,14
+    COMBOBOX        IDC_COMBO1,244,102,48,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT3,244,86,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "추가",IDC_BTNCOMBOADD,294,85,50,14
+    PUSHBUTTON      "삭제",IDC_BTNCOMBODEL,296,102,50,14
 END
 
 
@@ -265,6 +269,23 @@ BEGIN
     END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MY_FORM DLGINIT
+BEGIN
+    IDC_COMBO1, 0x403, 5, 0
+0xe7bb, 0xfab0, "\000" 
+    IDC_COMBO1, 0x403, 5, 0
+0xfeb5, 0xe2b1, "\000" 
+    IDC_COMBO1, 0x403, 5, 0
+0xf7c6, 0xb5b5, "\000" 
+    0
+END
 
 
 /////////////////////////////////////////////////////////////////////////////
