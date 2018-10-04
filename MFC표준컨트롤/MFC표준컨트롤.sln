@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "대화상자에서만들기
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "정적컨트롤", "정적컨트롤\정적컨트롤.vcxproj", "{25146D3A-735F-4730-8C34-3A713BA22542}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "고급컨트롤기법", "고급컨트롤기법\고급컨트롤기법.vcxproj", "{796D1130-0F41-40F7-919C-8E871602310A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{25146D3A-735F-4730-8C34-3A713BA22542}.Debug|Win32.Build.0 = Debug|Win32
 		{25146D3A-735F-4730-8C34-3A713BA22542}.Release|Win32.ActiveCfg = Release|Win32
 		{25146D3A-735F-4730-8C34-3A713BA22542}.Release|Win32.Build.0 = Release|Win32
+		{796D1130-0F41-40F7-919C-8E871602310A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{796D1130-0F41-40F7-919C-8E871602310A}.Debug|Win32.Build.0 = Debug|Win32
+		{796D1130-0F41-40F7-919C-8E871602310A}.Release|Win32.ActiveCfg = Release|Win32
+		{796D1130-0F41-40F7-919C-8E871602310A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
