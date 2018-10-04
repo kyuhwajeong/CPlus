@@ -41,6 +41,7 @@ void C고급컨트롤기법View::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_EDIT1, m_edit1);
+	DDX_Control(pDX, IDC_LIST1, m_list);
 }
 
 BOOL C고급컨트롤기법View::PreCreateWindow(CREATESTRUCT& cs)
@@ -58,6 +59,13 @@ void C고급컨트롤기법View::OnInitialUpdate()
 	ResizeParentToFit();
 
 	m_edit2.SubclassDlgItem(IDC_EDIT2, this);
+
+	m_list.AddString(L"딸기");
+	m_list.AddString(L"바나나");
+	m_list.AddString(L"사과");
+	m_list.AddString(L"수박");
+	m_list.AddString(L"참외");
+	m_list.AddString(L"포도");
 }
 
 

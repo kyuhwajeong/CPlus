@@ -6,6 +6,7 @@
 
 #include "resource.h"
 #include "MyEdit.h"
+#include "MyListBox.h"
 
 
 class C고급컨트롤기법View : public CFormView
@@ -47,6 +48,7 @@ protected:
 public:
 	CMyEdit m_edit1;
 	CMyEdit m_edit2;
+	CMyListBox m_list;
 };
 
 #ifndef _DEBUG  // 고급컨트롤기법View.cpp의 디버그 버전

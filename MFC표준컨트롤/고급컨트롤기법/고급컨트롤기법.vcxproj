@@ -103,6 +103,7 @@
   <ItemGroup>
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MyEdit.h" />
+    <ClInclude Include="MyListBox.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -113,6 +114,7 @@
   <ItemGroup>
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MyEdit.cpp" />
+    <ClCompile Include="MyListBox.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
