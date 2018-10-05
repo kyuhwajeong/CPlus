@@ -26,6 +26,10 @@ CMyDialog::~CMyDialog()
 void CMyDialog::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Text(pDX, IDC_STR, m_str);
+	DDV_MaxChars(pDX, m_str, 10);
+	DDX_Text(pDX, IDC_COLOR, m_color);
+	DDV_MinMaxInt(pDX, m_color, 0, 255);
 }
 
 
@@ -43,29 +47,9 @@ void CMyDialog::OnClickedBtnclrscr()
 }
 
 
-BOOL CMyDialog::OnInitDialog()
-{
-	CDialog::OnInitDialog();
-
-	SetDlgItemText(IDC_STR, m_str);
-	SetDlgItemInt(IDC_COLOR, m_color);
-
-	return TRUE;  // return TRUE unless you set the focus to a control
-	// 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
-}
-
-
-void CMyDialog::OnOK()
-{
-	GetDlgItemText(IDC_STR, m_str);
-	m_color = GetDlgItemInt(IDC_COLOR);
-
-	CDialog::OnOK();
-}
-
 // DDX(Dialog Data Exchange)
 // DDX의 핵심함수는 CWnd::UpdateData()이며 CDialog::OnInitDialog(), CDialog::OnOK()함수에서 자동으로 호출한다
 // 단순히 DDX기능을 위한 것이라면 두 함수를 재정의할 필요 없다.
 
 
-// C뷰어::OnLButtonDblClk -> CMyDialog::OnInitDialog -> CMyDialog::OnOK -> C뷰어::OnLButtonDblClk
+// 호출경로 C뷰어::OnLButtonDblClk -> CMyDialog::OnInitDialog -> CMyDialog::OnOK -> C뷰어::OnLButtonDblClk
