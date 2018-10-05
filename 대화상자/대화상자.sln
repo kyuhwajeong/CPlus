@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "모드형대화상자1", "�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "모드형대화상자2", "모드형대화상자2\모드형대화상자2.vcxproj", "{00C4ABE8-9C2C-4FE0-9AC8-2F6C69BBC3E9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "비모드형대화상자", "비모드형대화상자\비모드형대화상자.vcxproj", "{B138FF0D-9421-40D5-945B-B1CC46DF9C39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{00C4ABE8-9C2C-4FE0-9AC8-2F6C69BBC3E9}.Debug|Win32.Build.0 = Debug|Win32
 		{00C4ABE8-9C2C-4FE0-9AC8-2F6C69BBC3E9}.Release|Win32.ActiveCfg = Release|Win32
 		{00C4ABE8-9C2C-4FE0-9AC8-2F6C69BBC3E9}.Release|Win32.Build.0 = Release|Win32
+		{B138FF0D-9421-40D5-945B-B1CC46DF9C39}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B138FF0D-9421-40D5-945B-B1CC46DF9C39}.Debug|Win32.Build.0 = Debug|Win32
+		{B138FF0D-9421-40D5-945B-B1CC46DF9C39}.Release|Win32.ActiveCfg = Release|Win32
+		{B138FF0D-9421-40D5-945B-B1CC46DF9C39}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
