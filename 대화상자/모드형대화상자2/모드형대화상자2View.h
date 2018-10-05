@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+#include "MyDialog.h"
 
 class C모드형대화상자2View : public CView
 {
@@ -42,8 +42,10 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
-	CString m_str;
-	int m_color;
+	CString & m_str;
+	int & m_color;
+	CMyDialog m_dlg;
+
 };
 
 #ifndef _DEBUG  // 모드형대화상자2View.cpp의 디버그 버전

@@ -32,8 +32,8 @@ END_MESSAGE_MAP()
 // C모드형대화상자2View 생성/소멸
 
 C모드형대화상자2View::C모드형대화상자2View()
-	: m_str(_T(""))
-	, m_color(0)
+	: m_str(m_dlg.m_str)
+	, m_color(m_dlg.m_color)
 {
 	// TODO: 여기에 생성 코드를 추가합니다.
 
@@ -113,14 +113,8 @@ C모드형대화상자2Doc* C모드형대화상자2View::GetDocument() const // 디버그되지 않�
 
 void C모드형대화상자2View::OnLButtonDblClk(UINT nFlags, CPoint point)  // 뷰 바탕 더블클릭 시
 {
-	CMyDialog dlg;
-	dlg.m_str = m_str;
-	dlg.m_color = m_color;
-
-	int result = dlg.DoModal();
+	int result = m_dlg.DoModal();
 	if (result == IDOK){
-		m_str = dlg.m_str;
-		m_color = dlg.m_color;
 		Invalidate();
 	}
 	else if (result == 100){  // 다이어로그(IDD_DIALOG1) 지우기 버튼 실행 시 
