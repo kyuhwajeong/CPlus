@@ -11,11 +11,11 @@
 
 #include "비모드형대화상자Doc.h"
 #include "비모드형대화상자View.h"
+#include "MyDialog.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
-
 
 // C비모드형대화상자View
 
@@ -26,13 +26,16 @@ BEGIN_MESSAGE_MAP(C비모드형대화상자View, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+	ON_WM_LBUTTONDBLCLK()
 END_MESSAGE_MAP()
 
 // C비모드형대화상자View 생성/소멸
 
 C비모드형대화상자View::C비모드형대화상자View()
+	: m_str(_T(""))
+	, m_color(0)
 {
-	// TODO: 여기에 생성 코드를 추가합니다.
+	m_pDlg = NULL;
 
 }
 
@@ -50,14 +53,18 @@ BOOL C비모드형대화상자View::PreCreateWindow(CREATESTRUCT& cs)
 
 // C비모드형대화상자View 그리기
 
-void C비모드형대화상자View::OnDraw(CDC* /*pDC*/)
+void C비모드형대화상자View::OnDraw(CDC* pDC)
 {
 	C비모드형대화상자Doc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
 
-	// TODO: 여기에 원시 데이터에 대한 그리기 코드를 추가합니다.
+	CFont font;
+	font.CreatePointFont(300, L"Arial");
+	pDC->SelectObject(&font);
+	pDC->SetTextColor(RGB(m_color, 0, 0));
+	pDC->TextOut(10, 10, m_str);
 }
 
 
@@ -102,3 +109,20 @@ C비모드형대화상자Doc* C비모드형대화상자View::GetDocument() const // 디버그되지 �
 
 
 // C비모드형대화상자View 메시지 처리기
+
+
+void C비모드형대화상자View::OnLButtonDblClk(UINT nFlags, CPoint point)
+{
+	if (m_pDlg != NULL)
+		m_pDlg->SetFocus();
+	else{
+		m_pDlg = new CMyDialog();
+		m_pDlg->m_pView = this;
+		m_pDlg->m_str = m_str;
+		m_pDlg->m_color = m_color;
+		m_pDlg->Create(IDD_MYDIALOG);
+		m_pDlg->ShowWindow(SW_SHOW);
+	}
+
+	CView::OnLButtonDblClk(nFlags, point);
+}

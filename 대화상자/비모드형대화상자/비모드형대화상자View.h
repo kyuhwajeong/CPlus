@@ -3,7 +3,10 @@
 //
 
 #pragma once
+#include "MyDialog.h"
+#include "비모드형대화상자Doc.h"
 
+class CMyDialog;
 
 class C비모드형대화상자View : public CView
 {
@@ -40,6 +43,11 @@ protected:
 // 생성된 메시지 맵 함수
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
+	CMyDialog *m_pDlg;
+	CString m_str;
+	int m_color;
 };
 
 #ifndef _DEBUG  // 비모드형대화상자View.cpp의 디버그 버전
