@@ -30,12 +30,14 @@ BEGIN_MESSAGE_MAP(C공통대화상자View, CView)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
 	ON_COMMAND(ID_FINDREPLACE, &C공통대화상자View::OnFindreplace)
 	ON_REGISTERED_MESSAGE(WM_FINDREPLACE, &C공통대화상자View::OnFindReplaceCmd)
+	ON_COMMAND(ID_COLORSELECT, &C공통대화상자View::OnColorselect)
 END_MESSAGE_MAP()
 
 // C공통대화상자View 생성/소멸
 
 C공통대화상자View::C공통대화상자View()
 	: pFindReplaceDlg(NULL)
+	, pColorDlg(NULL)
 {
 	// TODO: 여기에 생성 코드를 추가합니다.
 
@@ -147,4 +149,22 @@ HRESULT C공통대화상자View::OnFindReplaceCmd(WPARAM wParam, LPARAM lParam)
 	}
 
 	return E_NOTIMPL;
+}
+
+
+void C공통대화상자View::OnColorselect()
+{
+	if (pColorDlg != NULL)
+		pColorDlg->SetFocus();
+	else{
+		pColorDlg = new CColorDialog(RGB(255, 0, 0), CC_FULLOPEN);
+		pColorDlg->DoModal();
+
+		COLORREF color = pColorDlg->GetColor();
+		CString str;
+		str.Format(L"색상값은 : %d", color);
+		MessageBox(str);
+		delete pColorDlg;
+	}
+
 }

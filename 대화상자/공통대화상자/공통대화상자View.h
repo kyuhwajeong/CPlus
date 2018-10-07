@@ -45,6 +45,9 @@ public:
 	CFindReplaceDialog *pFindReplaceDlg;
 protected:
 	HRESULT OnFindReplaceCmd(WPARAM wParam, LPARAM lParam);
+public:
+	afx_msg void OnColorselect();
+	CColorDialog *pColorDlg;
 };
 
 #ifndef _DEBUG  // 공통대화상자View.cpp의 디버그 버전
