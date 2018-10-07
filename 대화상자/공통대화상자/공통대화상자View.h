@@ -43,6 +43,8 @@ protected:
 public:
 	afx_msg void OnFindreplace();
 	CFindReplaceDialog *pFindReplaceDlg;
+protected:
+	HRESULT OnFindReplaceCmd(WPARAM wParam, LPARAM lParam);
 };
 
 #ifndef _DEBUG  // 공통대화상자View.cpp의 디버그 버전

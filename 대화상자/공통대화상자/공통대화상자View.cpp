@@ -16,6 +16,8 @@
 #define new DEBUG_NEW
 #endif
 
+static UINT WM_FINDREPLACE =
+::RegisterWindowMessage(FINDMSGSTRING);
 
 // C공통대화상자View
 
@@ -27,6 +29,7 @@ BEGIN_MESSAGE_MAP(C공통대화상자View, CView)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
 	ON_COMMAND(ID_FINDREPLACE, &C공통대화상자View::OnFindreplace)
+	ON_REGISTERED_MESSAGE(WM_FINDREPLACE, &C공통대화상자View::OnFindReplaceCmd)
 END_MESSAGE_MAP()
 
 // C공통대화상자View 생성/소멸
@@ -115,4 +118,33 @@ void C공통대화상자View::OnFindreplace()
 		pFindReplaceDlg->Create(FALSE, L"", L"", FR_DOWN, this);
 	}
 
+}
+
+
+HRESULT C공통대화상자View::OnFindReplaceCmd(WPARAM wParam, LPARAM lParam)
+{
+	CString str;
+
+	if (pFindReplaceDlg->IsTerminating()) // 대화상자 종료
+	{
+		pFindReplaceDlg = NULL;
+		return 0;
+	}
+	else if (pFindReplaceDlg->FindNext())
+	{
+		str.Format(L"찾을 문자열: %s", pFindReplaceDlg->GetFindString());
+		MessageBox(str);
+	}
+	else if (pFindReplaceDlg->ReplaceCurrent())
+	{
+		str.Format(L"찾을 문자열: %s\n\r바꿀 문자열: %s", pFindReplaceDlg->GetFindString(), pFindReplaceDlg->GetReplaceString());
+		MessageBox(str);
+	}
+	else if (pFindReplaceDlg->ReplaceAll())
+	{
+		str.Format(L"찾을 문자열: %s\n\r바꿀 문자열: %s", pFindReplaceDlg->GetFindString(), pFindReplaceDlg->GetReplaceString());
+		MessageBox(str);
+	}
+
+	return E_NOTIMPL;
 }
