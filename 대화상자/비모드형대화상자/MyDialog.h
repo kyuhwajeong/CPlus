@@ -2,7 +2,8 @@
 
 #include "비모드형대화상자View.h"
 // CMyDialog 대화 상자입니다.
-class C비모드형대화상자View;
+
+class C비모드형대화상자View; // 참조할 클래스 선언
 
 class CMyDialog : public CDialog
 {
@@ -22,9 +23,8 @@ protected:
 public:
 	CString m_str;
 	int m_color;
-	C비모드형대화상자View *m_pView;
+	C비모드형대화상자View *m_pView; 
 	virtual void OnCancel();
 	virtual void PostNcDestroy();
-//	virtual void OnOK();
 	afx_msg void OnApply();
 };

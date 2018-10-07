@@ -6,7 +6,7 @@
 #include "MyDialog.h"
 #include "비모드형대화상자Doc.h"
 
-class CMyDialog;
+class CMyDialog;  // 참조할 클래스 선언
 
 class C비모드형대화상자View : public CView
 {
