@@ -31,6 +31,11 @@ BEGIN_MESSAGE_MAP(C공통대화상자View, CView)
 	ON_COMMAND(ID_FINDREPLACE, &C공통대화상자View::OnFindreplace)
 	ON_REGISTERED_MESSAGE(WM_FINDREPLACE, &C공통대화상자View::OnFindReplaceCmd)
 	ON_COMMAND(ID_COLORSELECT, &C공통대화상자View::OnColorselect)
+	ON_COMMAND(ID_FILEOPENSAVE, &C공통대화상자View::OnFileopensave)
+	ON_COMMAND(ID_FONTSEL, &C공통대화상자View::OnFontsel)
+	ON_COMMAND(ID_PAGESETUP, &C공통대화상자View::OnPagesetup)
+	ON_COMMAND(ID_PRINT, &C공통대화상자View::OnPrint)
+	ON_COMMAND(ID_PRINTEX, &C공통대화상자View::OnPrintex)
 END_MESSAGE_MAP()
 
 // C공통대화상자View 생성/소멸
@@ -167,4 +172,58 @@ void C공통대화상자View::OnColorselect()
 		delete pColorDlg;
 	}
 
+}
+
+
+void C공통대화상자View::OnFileopensave()
+{
+	CFileDialog dlg(TRUE);
+	if (dlg.DoModal() == IDOK)
+		MessageBox(dlg.GetPathName());
+}
+
+
+void C공통대화상자View::OnFontsel()
+{
+	CFontDialog dlg;
+	if (dlg.DoModal() == IDOK)
+	{
+		CClientDC dc(this);
+		CRect rect;
+		GetClientRect(&rect);
+		dc.SelectStockObject(WHITE_PEN);
+		dc.SelectStockObject(WHITE_BRUSH);
+		dc.Rectangle(&rect);
+
+		COLORREF color = dlg.GetColor();
+		dc.SetTextColor(color);
+		LOGFONT lf;
+		dlg.GetCurrentFont(&lf);
+		CFont font;
+		font.CreateFontIndirectW(&lf);
+		dc.SelectObject(&font);
+		dc.TextOutW(10, 10, CString("한글 & English"));
+
+	}
+}
+
+
+void C공통대화상자View::OnPagesetup()
+{
+	CPageSetupDialog dlg;
+	dlg.DoModal();
+}
+
+
+void C공통대화상자View::OnPrint()
+{
+	CPrintDialog dlg(TRUE);
+	dlg.DoModal();
+}
+
+
+void C공통대화상자View::OnPrintex()
+{
+	CPrintDialogEx dlg;
+	dlg.DoModal();
 }

@@ -48,6 +48,11 @@ protected:
 public:
 	afx_msg void OnColorselect();
 	CColorDialog *pColorDlg;
+	afx_msg void OnFileopensave();
+	afx_msg void OnFontsel();
+	afx_msg void OnPagesetup();
+	afx_msg void OnPrint();
+	afx_msg void OnPrintex();
 };
 
 #ifndef _DEBUG  // 공통대화상자View.cpp의 디버그 버전

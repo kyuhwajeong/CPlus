@@ -132,7 +132,12 @@ BEGIN
     POPUP "공통대화상자(&V)"
     BEGIN
         MENUITEM "찾기 바꾸기",                      ID_FINDREPLACE
-        MENUITEM "색상선택",                        ID_COLORSELECT
+        MENUITEM "색상선택(CColorDialog)",          ID_COLORSELECT
+        MENUITEM "파일열기또는저장(CFileDialog)",       ID_FILEOPENSAVE
+        MENUITEM "폰트선택(CFontDialog)",           ID_FONTSEL
+        MENUITEM "페이지설정(CPageSetupDialog)",     ID_PAGESETUP
+        MENUITEM "인쇄설정(CPaintDialog)",          ID_PRINT
+        MENUITEM "인쇄설정(CPaintDialogEx)",        ID_PRINTEX
     END
     POPUP "도움말(&H)"
     BEGIN
