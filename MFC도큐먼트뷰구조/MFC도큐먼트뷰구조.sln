@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "동적분할원도우", "�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "정적분할원도우", "정적분할원도우\정적분할원도우.vcxproj", "{0DA8018C-5625-4819-9F15-5B79FA713E9E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDI", "MDI\MDI.vcxproj", "{F4168623-9D03-47FA-BF6A-49569630E750}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{0DA8018C-5625-4819-9F15-5B79FA713E9E}.Debug|Win32.Build.0 = Debug|Win32
 		{0DA8018C-5625-4819-9F15-5B79FA713E9E}.Release|Win32.ActiveCfg = Release|Win32
 		{0DA8018C-5625-4819-9F15-5B79FA713E9E}.Release|Win32.Build.0 = Release|Win32
+		{F4168623-9D03-47FA-BF6A-49569630E750}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F4168623-9D03-47FA-BF6A-49569630E750}.Debug|Win32.Build.0 = Debug|Win32
+		{F4168623-9D03-47FA-BF6A-49569630E750}.Release|Win32.ActiveCfg = Release|Win32
+		{F4168623-9D03-47FA-BF6A-49569630E750}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
