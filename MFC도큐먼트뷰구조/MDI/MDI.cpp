@@ -117,6 +117,8 @@ BOOL CMDIApp::InitInstance()
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
 
+	cmdInfo.m_nShellCommand = CCommandLineInfo::FileNothing;
+
 	// DDE Execute 열기를 활성화합니다.
 	EnableShellOpen();
 	RegisterShellFileTypes(TRUE);
