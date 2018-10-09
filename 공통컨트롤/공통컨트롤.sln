@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "이미지리스트", "이미지리스트\이미지리스트.vcxproj", "{7D72FE62-EBFA-49A2-85AE-716D8F264C85}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "탭컨트롤", "탭컨트롤\탭컨트롤.vcxproj", "{BFC8BF28-9F46-4797-8410-66ADEFB5F895}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,10 @@ Global
 		{7D72FE62-EBFA-49A2-85AE-716D8F264C85}.Debug|Win32.Build.0 = Debug|Win32
 		{7D72FE62-EBFA-49A2-85AE-716D8F264C85}.Release|Win32.ActiveCfg = Release|Win32
 		{7D72FE62-EBFA-49A2-85AE-716D8F264C85}.Release|Win32.Build.0 = Release|Win32
+		{BFC8BF28-9F46-4797-8410-66ADEFB5F895}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BFC8BF28-9F46-4797-8410-66ADEFB5F895}.Debug|Win32.Build.0 = Debug|Win32
+		{BFC8BF28-9F46-4797-8410-66ADEFB5F895}.Release|Win32.ActiveCfg = Release|Win32
+		{BFC8BF28-9F46-4797-8410-66ADEFB5F895}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
