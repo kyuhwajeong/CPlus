@@ -12,6 +12,9 @@
 #include "MDIDoc.h"
 #include "MDIView.h"
 
+#include "DrawDoc.h"
+#include "DrawView.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -99,6 +102,12 @@ BOOL CMDIApp::InitInstance()
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
 
+	pDocTemplate = new CMultiDocTemplate(IDR_DRAWTYPE,
+		RUNTIME_CLASS(CDrawDoc),
+		RUNTIME_CLASS(CChildFrame), // 사용자 지정 MDI 자식 프레임입니다.
+		RUNTIME_CLASS(CDrawView));
+	AddDocTemplate(pDocTemplate);
+
 	// 주 MDI 프레임 창을 만듭니다.
 	CMainFrame* pMainFrame = new CMainFrame;
 	if (!pMainFrame || !pMainFrame->LoadFrame(IDR_MAINFRAME))
@@ -117,7 +126,7 @@ BOOL CMDIApp::InitInstance()
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
 
-	cmdInfo.m_nShellCommand = CCommandLineInfo::FileNothing;
+	cmdInfo.m_nShellCommand = CCommandLineInfo::FileNothing; // 시작할때 새 문서 띄우지 않기
 
 	// DDE Execute 열기를 활성화합니다.
 	EnableShellOpen();

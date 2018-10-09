@@ -102,6 +102,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="DrawDoc.h" />
+    <ClInclude Include="DrawView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MDI.h" />
     <ClInclude Include="MDIDoc.h" />
@@ -112,6 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="DrawDoc.cpp" />
+    <ClCompile Include="DrawView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MDI.cpp" />
     <ClCompile Include="MDIDoc.cpp" />
@@ -129,6 +133,7 @@
     <ResourceCompile Include="MDI.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\icon1.ico" />
     <Image Include="res\MDI.ico" />
     <Image Include="res\MDIDoc.ico" />
     <Image Include="res\Toolbar.bmp" />
