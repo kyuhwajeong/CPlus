@@ -126,6 +126,8 @@
     <None Include="res\My.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\bitmap2.bmp" />
     <Image Include="res\Toolbar.bmp" />
     <Image Include="res\이미지리스트.ico" />
     <Image Include="res\이미지리스트Doc.ico" />
@@ -133,4 +135,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="이미지리스트.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

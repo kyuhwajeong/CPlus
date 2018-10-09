@@ -11,6 +11,7 @@
 
 #include "이미지리스트Doc.h"
 #include "이미지리스트View.h"
+#include "resource.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -26,6 +27,7 @@ BEGIN_MESSAGE_MAP(C이미지리스트View, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 // C이미지리스트View 생성/소멸
@@ -50,14 +52,35 @@ BOOL C이미지리스트View::PreCreateWindow(CREATESTRUCT& cs)
 
 // C이미지리스트View 그리기
 
-void C이미지리스트View::OnDraw(CDC* /*pDC*/)
+void C이미지리스트View::OnDraw(CDC* pDC)
 {
 	C이미지리스트Doc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
 
-	// TODO: 여기에 원시 데이터에 대한 그리기 코드를 추가합니다.
+	// 배경을 칠한다.
+	CBrush brush(HS_DIAGCROSS, RGB(0, 255, 0));
+	pDC->SelectObject(&brush);
+	CRect rect;
+	GetClientRect(&rect);
+	pDC->Rectangle(&rect);
+
+	// 배경을 투명색으로 설정한다.
+	m_il.SetBkColor(CLR_NONE);
+	m_il.Draw(pDC, 0, CPoint(100, 100), ILD_NORMAL);
+	m_il.Draw(pDC, 0, CPoint(200, 100), ILD_TRANSPARENT);
+	m_il.Draw(pDC, 0, CPoint(300, 100), ILD_BLEND25);
+	m_il.Draw(pDC, 0, CPoint(400, 100), ILD_BLEND50);
+	m_il.Draw(pDC, 0, CPoint(500, 100), ILD_MASK);
+
+	// 배경을 검정색으로 설정한다
+	m_il.SetBkColor(RGB(0,0,0));
+	m_il.Draw(pDC, 1, CPoint(100, 200), ILD_NORMAL);
+	m_il.Draw(pDC, 1, CPoint(200, 200), ILD_TRANSPARENT);
+	m_il.Draw(pDC, 1, CPoint(300, 200), ILD_BLEND25);
+	m_il.Draw(pDC, 1, CPoint(400, 200), ILD_BLEND50);
+	m_il.Draw(pDC, 1, CPoint(500, 200), ILD_MASK);
 }
 
 
@@ -102,3 +125,14 @@ C이미지리스트Doc* C이미지리스트View::GetDocument() const // 디버그되지 않은 버전
 
 
 // C이미지리스트View 메시지 처리기
+
+
+int C이미지리스트View::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CView::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	m_il.Create(IDB_BITMAP1, 48, 1, RGB(255, 255, 255));
+
+	return 0;
+}
