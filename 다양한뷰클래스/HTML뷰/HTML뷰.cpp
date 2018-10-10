@@ -18,13 +18,13 @@
 
 // CHTML뷰App
 
-BEGIN_MESSAGE_MAP(CHTML뷰App, CWinApp)
+BEGIN_MESSAGE_MAP(CHTML뷰App, CWinAppEx)
 	ON_COMMAND(ID_APP_ABOUT, &CHTML뷰App::OnAppAbout)
 	// 표준 파일을 기초로 하는 문서 명령입니다.
-	ON_COMMAND(ID_FILE_NEW, &CWinApp::OnFileNew)
-	ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
+	ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
+	ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
 	// 표준 인쇄 설정 명령입니다.
-	ON_COMMAND(ID_FILE_PRINT_SETUP, &CWinApp::OnFilePrintSetup)
+	ON_COMMAND(ID_FILE_PRINT_SETUP, &CWinAppEx::OnFilePrintSetup)
 END_MESSAGE_MAP()
 
 
@@ -68,7 +68,7 @@ BOOL CHTML뷰App::InitInstance()
 	InitCtrls.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
 
-	CWinApp::InitInstance();
+	CWinAppEx::InitInstance();
 
 
 	EnableTaskbarInteraction(FALSE);

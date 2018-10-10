@@ -11,7 +11,7 @@
 
 #include "HTML∫‰Doc.h"
 #include "HTML∫‰View.h"
-
+#include "MyDialog.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -24,6 +24,9 @@ IMPLEMENT_DYNCREATE(CHTML∫‰View, CHtmlView)
 BEGIN_MESSAGE_MAP(CHTML∫‰View, CHtmlView)
 	// «•¡ÿ ¿Œº‚ ∏Ì∑…¿‘¥œ¥Ÿ.
 	ON_COMMAND(ID_FILE_PRINT, &CHtmlView::OnFilePrint)
+	ON_COMMAND(ID_INTERNET_OPEN, &CHTML∫‰View::OnInternetOpen)
+	ON_COMMAND(ID_INTERNET_BACK, &CHTML∫‰View::OnInternetBack)
+	ON_COMMAND(ID_INTERNET_FORWARD, &CHTML∫‰View::OnInternetForward)
 END_MESSAGE_MAP()
 
 // CHTML∫‰View ª˝º∫/º“∏Í
@@ -49,8 +52,8 @@ BOOL CHTML∫‰View::PreCreateWindow(CREATESTRUCT& cs)
 void CHTML∫‰View::OnInitialUpdate()
 {
 	CHtmlView::OnInitialUpdate();
-
-	//Navigate2(_T("http://www.msdn.microsoft.com/korea/visualc/"),NULL,NULL);;
+	GoHome();
+//	Navigate2(_T("http://www.msdn.microsoft.com/korea/visualc/"),NULL,NULL);
 }
 
 
@@ -80,3 +83,23 @@ CHTML∫‰Doc* CHTML∫‰View::GetDocument() const // µπˆ±◊µ«¡ˆ æ ¿∫ πˆ¿¸¿∫ ¿Œ∂Û¿Œ¿∏∑
 
 
 // CHTML∫‰View ∏ﬁΩ√¡ˆ √≥∏Æ±‚
+
+
+void CHTML∫‰View::OnInternetOpen()
+{
+	CMyDialog dlg;
+	if (dlg.DoModal() == IDOK)
+		Navigate2(dlg.m_url, NULL, NULL);
+}
+
+
+void CHTML∫‰View::OnInternetBack()
+{
+	GoBack();
+}
+
+
+void CHTML∫‰View::OnInternetForward()
+{
+	GoForward();
+}
