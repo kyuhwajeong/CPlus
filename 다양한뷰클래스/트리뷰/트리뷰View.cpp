@@ -12,6 +12,7 @@
 #include "트리뷰Doc.h"
 #include "트리뷰View.h"
 
+#include "Resource.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -22,6 +23,9 @@
 IMPLEMENT_DYNCREATE(C트리뷰View, CTreeView)
 
 BEGIN_MESSAGE_MAP(C트리뷰View, CTreeView)
+	ON_NOTIFY_REFLECT(TVN_SELCHANGED, &C트리뷰View::OnTvnSelchanged)
+//	ON_NOTIFY_REFLECT(TVN_DELETEITEM, &C트리뷰View::OnTvnDeleteitem)
+ON_COMMAND(ID_TEST_DELETEITEM, &C트리뷰View::OnTestDeleteitem)
 END_MESSAGE_MAP()
 
 // C트리뷰View 생성/소멸
@@ -38,8 +42,10 @@ C트리뷰View::~C트리뷰View()
 
 BOOL C트리뷰View::PreCreateWindow(CREATESTRUCT& cs)
 {
-	// TODO: CREATESTRUCT cs를 수정하여 여기에서
-	//  Window 클래스 또는 스타일을 수정합니다.
+	cs.style |= TVS_HASBUTTONS;
+	cs.style |= TVS_HASLINES;
+	cs.style |= TVS_LINESATROOT;
+	cs.style |= TVS_TRACKSELECT;
 
 	return CTreeView::PreCreateWindow(cs);
 }
@@ -48,6 +54,32 @@ void C트리뷰View::OnInitialUpdate()
 {
 	CTreeView::OnInitialUpdate();
 
+	// 이미지 리스트 생성
+	CImageList il;
+	il.Create(IDB_BITMAP1, 16, 1, RGB(255, 255, 255));
+
+	CTreeCtrl &tree = GetTreeCtrl();
+	tree.SetImageList(&il, TVSIL_NORMAL);
+	il.Detach();
+
+	HTREEITEM hSun = tree.InsertItem(L"태양", 0, 0, TVI_ROOT, TVI_LAST);
+
+	HTREEITEM hPlannet[9];
+	CString planet[] = {
+		L"수정", L"금성", L"지구", L"화성", L"목성", L"토성", L"천왕성", L"해왕성", L"명왕성"
+	};
+	for (int i = 0; i < 9; i++)
+	{
+		hPlannet[i] = tree.InsertItem(planet[i], 1, 1, hSun, TVI_LAST);
+	}
+
+	tree.InsertItem(L"달", 2, 2, hPlannet[2], TVI_LAST);
+	tree.InsertItem(L"포보스", 2, 2, hPlannet[2], TVI_LAST);
+	tree.InsertItem(L"데이모스", 2, 2, hPlannet[3], TVI_LAST);
+	tree.InsertItem(L"이오", 2, 2, hPlannet[4], TVI_LAST);
+	tree.InsertItem(L"에우로파", 2, 2, hPlannet[4], TVI_LAST);
+	tree.InsertItem(L"가니메데", 2, 2, hPlannet[4], TVI_LAST);
+	tree.InsertItem(L"갈리스토", 2, 2, hPlannet[4], TVI_LAST);
 }
 
 
@@ -73,3 +105,26 @@ C트리뷰Doc* C트리뷰View::GetDocument() const // 디버그되지 않은 버전은 인라인으�
 
 
 // C트리뷰View 메시지 처리기
+
+
+void C트리뷰View::OnTvnSelchanged(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	LPNMTREEVIEW pNMTreeView = reinterpret_cast<LPNMTREEVIEW>(pNMHDR);
+	TVITEM tvi = pNMTreeView->itemNew;
+	CTreeCtrl& tree = GetTreeCtrl();
+	CString str = tree.GetItemText(tvi.hItem);
+	AfxGetMainWnd()->SetWindowTextW(str);
+
+	*pResult = 0;
+}
+
+
+void C트리뷰View::OnTestDeleteitem()
+{
+	CTreeCtrl& tree = GetTreeCtrl();
+	HTREEITEM hItem = tree.GetSelectedItem();
+	if (hItem != NULL)
+	{
+		tree.DeleteItem(hItem);
+	}
+}
