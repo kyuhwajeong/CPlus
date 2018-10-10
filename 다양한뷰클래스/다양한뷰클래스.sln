@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "리스트뷰", "리스트뷰\리스트뷰.vcxproj", "{6E4F5785-5E6F-4A25-9189-AB382B0413D9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "트리뷰", "트리뷰\트리뷰.vcxproj", "{814419F9-296E-43E9-92A8-0DA4FE4B028B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,10 @@ Global
 		{6E4F5785-5E6F-4A25-9189-AB382B0413D9}.Debug|Win32.Build.0 = Debug|Win32
 		{6E4F5785-5E6F-4A25-9189-AB382B0413D9}.Release|Win32.ActiveCfg = Release|Win32
 		{6E4F5785-5E6F-4A25-9189-AB382B0413D9}.Release|Win32.Build.0 = Release|Win32
+		{814419F9-296E-43E9-92A8-0DA4FE4B028B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{814419F9-296E-43E9-92A8-0DA4FE4B028B}.Debug|Win32.Build.0 = Debug|Win32
+		{814419F9-296E-43E9-92A8-0DA4FE4B028B}.Release|Win32.ActiveCfg = Release|Win32
+		{814419F9-296E-43E9-92A8-0DA4FE4B028B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
