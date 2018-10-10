@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "트리뷰", "트리뷰\트�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "스크롤뷰", "스크롤뷰\스크롤뷰.vcxproj", "{C171BC72-D592-42DB-93C4-322802D28C1A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HTML뷰", "HTML뷰\HTML뷰.vcxproj", "{FC0D7783-F0E8-4EAF-B96E-F12EEF171884}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{C171BC72-D592-42DB-93C4-322802D28C1A}.Debug|Win32.Build.0 = Debug|Win32
 		{C171BC72-D592-42DB-93C4-322802D28C1A}.Release|Win32.ActiveCfg = Release|Win32
 		{C171BC72-D592-42DB-93C4-322802D28C1A}.Release|Win32.Build.0 = Release|Win32
+		{FC0D7783-F0E8-4EAF-B96E-F12EEF171884}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FC0D7783-F0E8-4EAF-B96E-F12EEF171884}.Debug|Win32.Build.0 = Debug|Win32
+		{FC0D7783-F0E8-4EAF-B96E-F12EEF171884}.Release|Win32.ActiveCfg = Release|Win32
+		{FC0D7783-F0E8-4EAF-B96E-F12EEF171884}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
