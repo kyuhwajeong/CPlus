@@ -37,6 +37,11 @@ protected:
 // 생성된 메시지 맵 함수
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnIconview();
+	afx_msg void OnSmalliconview();
+	afx_msg void OnListview();
+	afx_msg void OnReportview();
 };
 
 #ifndef _DEBUG  // 리스트뷰View.cpp의 디버그 버전

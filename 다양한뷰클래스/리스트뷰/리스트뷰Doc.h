@@ -4,7 +4,14 @@
 
 
 #pragma once
+struct MYITEM
+{
+	CString name;
+	int price;
+	int quantity;
+};
 
+const int NUMITEM = 100; // 100개의 항목
 
 class C리스트뷰Doc : public CDocument
 {
@@ -14,7 +21,7 @@ protected: // serialization에서만 만들어집니다.
 
 // 특성입니다.
 public:
-
+	MYITEM m_item[NUMITEM];
 // 작업입니다.
 public:
 
