@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "이미지리스트", "이�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "탭컨트롤", "탭컨트롤\탭컨트롤.vcxproj", "{BFC8BF28-9F46-4797-8410-66ADEFB5F895}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "스핀버튼컨트롤", "스핀버튼컨트롤\스핀버튼컨트롤.vcxproj", "{4D2149D1-2126-4E8E-A2A8-47F2E7ED6D51}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "프로그레스컨트롤", "프로그레스컨트롤\프로그레스컨트롤.vcxproj", "{8DF0AC50-D486-4AEA-A1B9-49990CB0F888}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +25,14 @@ Global
 		{BFC8BF28-9F46-4797-8410-66ADEFB5F895}.Debug|Win32.Build.0 = Debug|Win32
 		{BFC8BF28-9F46-4797-8410-66ADEFB5F895}.Release|Win32.ActiveCfg = Release|Win32
 		{BFC8BF28-9F46-4797-8410-66ADEFB5F895}.Release|Win32.Build.0 = Release|Win32
+		{4D2149D1-2126-4E8E-A2A8-47F2E7ED6D51}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4D2149D1-2126-4E8E-A2A8-47F2E7ED6D51}.Debug|Win32.Build.0 = Debug|Win32
+		{4D2149D1-2126-4E8E-A2A8-47F2E7ED6D51}.Release|Win32.ActiveCfg = Release|Win32
+		{4D2149D1-2126-4E8E-A2A8-47F2E7ED6D51}.Release|Win32.Build.0 = Release|Win32
+		{8DF0AC50-D486-4AEA-A1B9-49990CB0F888}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8DF0AC50-D486-4AEA-A1B9-49990CB0F888}.Debug|Win32.Build.0 = Debug|Win32
+		{8DF0AC50-D486-4AEA-A1B9-49990CB0F888}.Release|Win32.ActiveCfg = Release|Win32
+		{8DF0AC50-D486-4AEA-A1B9-49990CB0F888}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
