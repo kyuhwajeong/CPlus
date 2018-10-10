@@ -22,12 +22,15 @@
 IMPLEMENT_DYNCREATE(C프로그레스컨트롤View, CFormView)
 
 BEGIN_MESSAGE_MAP(C프로그레스컨트롤View, CFormView)
+	ON_WM_LBUTTONDBLCLK()
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 // C프로그레스컨트롤View 생성/소멸
 
 C프로그레스컨트롤View::C프로그레스컨트롤View()
 	: CFormView(C프로그레스컨트롤View::IDD)
+	, bNowProgress(false)
 {
 	// TODO: 여기에 생성 코드를 추가합니다.
 
@@ -40,6 +43,7 @@ C프로그레스컨트롤View::~C프로그레스컨트롤View()
 void C프로그레스컨트롤View::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_PROGRESS1, m_progress);
 }
 
 BOOL C프로그레스컨트롤View::PreCreateWindow(CREATESTRUCT& cs)
@@ -81,3 +85,33 @@ C프로그레스컨트롤Doc* C프로그레스컨트롤View::GetDocument() const // 디버그되지 �
 
 
 // C프로그레스컨트롤View 메시지 처리기
+
+
+void C프로그레스컨트롤View::OnLButtonDblClk(UINT nFlags, CPoint point)
+{
+	if (bNowProgress == FALSE)
+	{
+		bNowProgress = TRUE;
+		m_progress.SetRange(0, 10);
+		m_progress.SetPos(0);
+		SetTimer(100, 500, NULL); // 타이머 생성  ID는 100 // NULL은 WM_TIMER 메시지 발생
+	}
+
+	CFormView::OnLButtonDblClk(nFlags, point);
+}
+
+
+void C프로그레스컨트롤View::OnTimer(UINT_PTR nIDEvent)
+{
+	if (nIDEvent)
+	{
+		if (m_progress.GetPos() < 10)
+			m_progress.OffsetPos(1);
+		else{
+			KillTimer(100);	// 타이머 파괴(ID = 100)
+			bNowProgress = FALSE;
+		}
+	}
+
+	CFormView::OnTimer(nIDEvent);
+}

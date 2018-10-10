@@ -5,6 +5,7 @@
 #pragma once
 
 #include "resource.h"
+#include "afxcmn.h"
 
 
 class C프로그레스컨트롤View : public CFormView
@@ -43,6 +44,12 @@ protected:
 // 생성된 메시지 맵 함수
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	CProgressCtrl m_progress;
+	// 현재 프로그래스 컨트롤이 동작하고 있음을 나타내는 변수
+	bool bNowProgress;
+	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
 
 #ifndef _DEBUG  // 프로그레스컨트롤View.cpp의 디버그 버전
