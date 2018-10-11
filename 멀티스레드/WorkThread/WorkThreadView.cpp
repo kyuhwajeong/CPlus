@@ -104,10 +104,31 @@ CWorkThreadDoc* CWorkThreadView::GetDocument() const // 디버그되지 않은 버전은 �
 
 // CWorkThreadView 메시지 처리기
 
+UINT CalcIt(LPVOID arg)
+{
+	int val = (int)arg;
+
+	int result = 0;
+	for (int i = 1; i < val; i++)
+	{
+		result += i;
+		Sleep(10);  //계산 속도를 느리게 한다.
+	}
+
+	CString str;
+	str.Format(L"계산 결과 = %d", result);
+	AfxMessageBox(str);
+
+	return 0;
+}
 
 void CWorkThreadView::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
-	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	int val = 600;
+
+	// 쓰레드를 사용하지 않는 경우
+	CalcIt((LPVOID)val);
 
 	CView::OnLButtonDblClk(nFlags, point);
 }
+
