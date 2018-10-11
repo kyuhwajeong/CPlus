@@ -26,6 +26,7 @@ BEGIN_MESSAGE_MAP(CWorkThread2View, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+	ON_WM_LBUTTONDBLCLK()
 END_MESSAGE_MAP()
 
 // CWorkThread2View 생성/소멸
@@ -102,3 +103,73 @@ CWorkThread2Doc* CWorkThread2View::GetDocument() const // 디버그되지 않은 버전은
 
 
 // CWorkThread2View 메시지 처리기
+UINT MyDraw(LPVOID arg)
+{
+	ThreadArg *pArg = (ThreadArg *)arg;
+
+	// CDC 객체를 선언하고 디바이스 컨텍스트 핸들과 연결시킨다.
+	CDC dc;
+	HDC hdc = ::GetDC(pArg->hwnd);
+	dc.Attach(hdc);
+
+	int i, x, y;
+	CBrush brush1(RGB(255, 0, 0));
+	CBrush brush2(RGB(0, 0, 255));
+	
+	// 화면에 느린 속도로 막대를 출력한다.
+	switch (pArg->type){
+	case 1:
+		dc.SelectObject(&brush1);
+		x = 100;
+		y = 100;
+		for (i = 0; i<100000; i++){
+			int inc = i / 200;
+			dc.Rectangle(x, y, x + inc, y + 20);
+		}
+		break;
+	case 2:
+		dc.SelectObject(&brush2);
+		x = 100;
+		y = 200;
+		for (i = 0; i<100000; i++){
+			int inc = i / 200;
+			dc.Rectangle(x, y, x + inc, y + 20);
+		}
+		break;
+	}
+
+	dc.Detach();
+	::ReleaseDC(pArg->hwnd, hdc);
+
+	return 0;
+}
+
+void CWorkThread2View::OnLButtonDblClk(UINT nFlags, CPoint point)
+{
+	// 화면을 지운다.
+	CClientDC dc(this);
+	dc.SelectStockObject(WHITE_PEN);
+	dc.SelectStockObject(WHITE_BRUSH);
+	CRect rect;
+	GetClientRect(&rect);
+	dc.Rectangle(&rect);
+
+	//첫번째 스레드 생성(정지 상태)
+	arg1.hwnd = this->m_hWnd;
+	arg1.type = 1;
+	pThread1 = AfxBeginThread(MyDraw, &arg1, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED);
+
+	//두번째 스레드 생성(정지 상태)
+	arg2.hwnd = this->m_hWnd;
+	arg2.type = 2;
+	pThread2 = AfxBeginThread(MyDraw, &arg2, THREAD_PRIORITY_NORMAL, 0, CREATE_SUSPENDED);
+
+	// 스레드 우선순위 레벨 변경
+	pThread2->SetThreadPriority(THREAD_PRIORITY_ABOVE_NORMAL);
+
+	// 두 스레드를 실행한다.
+	pThread1->ResumeThread();
+	pThread2->ResumeThread();
+
+	CView::OnLButtonDblClk(nFlags, point);
+}

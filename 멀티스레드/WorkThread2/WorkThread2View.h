@@ -3,7 +3,11 @@
 //
 
 #pragma once
-
+struct ThreadArg
+{
+	HWND hwnd;	// 원도우 핸들
+	int type;	// 1이면 위쪽에, 2면 아래쪽에 막대를 그린다.
+};
 
 class CWorkThread2View : public CView
 {
@@ -17,7 +21,8 @@ public:
 
 // 작업입니다.
 public:
-
+	CWinThread *pThread1, *pThread2;
+	ThreadArg arg1, arg2;
 // 재정의입니다.
 public:
 	virtual void OnDraw(CDC* pDC);  // 이 뷰를 그리기 위해 재정의되었습니다.
@@ -40,6 +45,8 @@ protected:
 // 생성된 메시지 맵 함수
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
 };
 
 #ifndef _DEBUG  // WorkThread2View.cpp의 디버그 버전
