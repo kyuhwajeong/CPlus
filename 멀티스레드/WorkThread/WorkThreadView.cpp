@@ -126,8 +126,8 @@ void CWorkThreadView::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
 	int val = 600;
 
-	// 쓰레드를 사용하지 않는 경우
-	CalcIt((LPVOID)val);
+	// 쓰레드를 사용하는 경우
+	AfxBeginThread(CalcIt,(LPVOID)val);
 
 	CView::OnLButtonDblClk(nFlags, point);
 }
